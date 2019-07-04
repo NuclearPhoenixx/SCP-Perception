@@ -16,7 +16,7 @@ position = Vector2( 4.76837e-007, 4.76837e-007 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="DebugPathfinding" type="Line2D" parent="."]
