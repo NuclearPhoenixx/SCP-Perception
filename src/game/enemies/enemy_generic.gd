@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-onready var nav = get_node("../Navigation")
-onready var player = get_node("../Player")
+onready var nav = get_tree().get_root().find_node("Navigation", true, false)#get_node("../Navigation")
+onready var player = get_tree().get_root().find_node("Player", true, false)#get_node("../Player")
 onready var pathfinding = get_node("DebugPathfinding")
 
 var SPEED = 80
@@ -19,7 +19,7 @@ func _physics_process(delta): #real short movement code. seems to work, nice :)
 	move_and_slide(direction * SPEED)
 	
 	# DEBUG STUFF
-	if game.debug_mode: #if in debug mode then show the pathfinding vectors
+	if settings.debug_mode: #if in debug mode then show the pathfinding vectors
 		var debug_path = PoolVector2Array()
 		for i in path:
 			debug_path.append(to_local(i))

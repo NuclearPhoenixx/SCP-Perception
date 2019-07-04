@@ -1,6 +1,11 @@
 extends Node
 
-var debug_mode = false
+#PLAYER VARIABLES
+var stamina = -1 #tracks current stamina, -1 for full stamina on spawn
+var stamina_regen = .5 #stamina regeneration rate
+var exh_rate = 1 #stamina exhaustion rate
+var walk_speed = 60 #normal walking speed
+var sprint_speed = 100 #speed for sprinting
 
 func _init():
 	pause_mode = Node.PAUSE_MODE_PROCESS
@@ -13,7 +18,7 @@ func _unhandled_key_input(event):
 		get_tree().reload_current_scene()
 	
 	if event.is_action_pressed("debug"): #enable debugging mode
-		if debug_mode:
-			debug_mode = false
+		if settings.debug_mode:
+			settings.debug_mode = false
 		else:
-			debug_mode = true
+			settings.debug_mode = true

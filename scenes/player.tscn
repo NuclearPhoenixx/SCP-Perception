@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/game/player/player.gd" type="Script" id=1]
 [ext_resource path="res://textures/player_placeholder.png" type="Texture" id=2]
-[ext_resource path="res://textures/light.png" type="Texture" id=3]
+[ext_resource path="res://textures/light2.png" type="Texture" id=3]
 [ext_resource path="res://src/game/hud/debug_showhide.gd" type="Script" id=4]
 [ext_resource path="res://src/game/player/camera.gd" type="Script" id=5]
 [ext_resource path="res://src/game/player/death.gd" type="Script" id=6]
@@ -27,6 +27,7 @@ shape = SubResource( 1 )
 [node name="FOV" type="Light2D" parent="."]
 texture = ExtResource( 3 )
 texture_scale = 1.5
+color = Color( 1, 1, 1, 0.588235 )
 mode = 2
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )

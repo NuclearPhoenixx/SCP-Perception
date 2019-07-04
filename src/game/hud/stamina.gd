@@ -1,10 +1,14 @@
 extends ProgressBar
 
-onready var player = get_node("../../Player")
+onready var player = get_tree().get_root().find_node("Player", true, false)#get_node("../../Player")
 var exhausted = false #flag to check player exhaustion
 
-var STAMINA_REGEN = .5 #stamina regeneration rate
-var EXH_RATE = 1 #stamina exhaustion rate
+func _ready():
+	if game.stamina == -1:
+		game.stamina = max_value
+		value = max_value
+	else:
+		value = game.stamina
 
 func _process(delta):
 	if value == min_value: #if stamina is min player is exhausted
@@ -13,9 +17,9 @@ func _process(delta):
 	if exhausted: #if player is exhausted then he cannot run until stamina has fully recovered
 		if value == max_value:
 			exhausted = false
-			player.sprints = player.SPRINT_SPEED
+			player.current_sprint_speed = game.sprint_speed
 		else:
-			player.sprints = player.WALK_SPEED
+			player.current_sprint_speed = game.walk_speed
 	
 	if Input.is_action_pressed("sprint") and !exhausted:
 		value -= 1

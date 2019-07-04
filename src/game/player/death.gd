@@ -1,6 +1,6 @@
 extends Area2D
 
 func _on_DeathZone_body_entered(body): #collision with any enemy will kill you
-	if "enemy" in body.name.to_lower():
+	if body.is_in_group("lethal"):
 		print("You died!")
 		get_tree().reload_current_scene()

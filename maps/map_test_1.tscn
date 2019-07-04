@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://textures/tilemap/tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/hud.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/enemy_generic.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/enemies/scp-017.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/enemies/enemy_generic.tscn" type="PackedScene" id=5]
 
 [node name="World" type="Node2D"]
 
@@ -20,8 +21,8 @@ tile_data = PoolIntArray( -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 411.079, 36.5649 )
 
-[node name="GenericEnemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 535.178, 373.406 )
+[node name="Enemy_SCP-017" parent="." instance=ExtResource( 4 )]
+position = Vector2( 613.487, 379.85 )
 
-[node name="GenericEnemy2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1094.77, 653.845 )
+[node name="GenericEnemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1002.11, 659.722 )
