@@ -10,7 +10,7 @@ func _ready():
 	else:
 		value = game.stamina
 
-func _process(delta):
+func _physics_process(delta):
 	if value == min_value: #if stamina is min player is exhausted
 		exhausted = true
 	
