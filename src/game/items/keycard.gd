@@ -14,3 +14,4 @@ func _on_PickUpRange_body_exited(body):
 func _unhandled_key_input(event):
 	if event.is_action_pressed("interact"):
 		print("pick up " + self.name)
+		get_tree().set_input_as_handled()

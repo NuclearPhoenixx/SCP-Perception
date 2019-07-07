@@ -46,6 +46,7 @@ script = ExtResource( 5 )
 
 [node name="DeathBox" type="Area2D" parent="."]
 editor/display_folded = true
+input_pickable = false
 monitorable = false
 script = ExtResource( 6 )
 

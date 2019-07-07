@@ -92,7 +92,7 @@ rotation = 1.5708
 [node name="Items" type="Node2D" parent="Navigation/Map"]
 
 [node name="StandardKeycard" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
-position = Vector2( 88, 19 )
+position = Vector2( 64, 90 )
 
 [node name="StandardKeycard2" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
 position = Vector2( 308, -19 )
