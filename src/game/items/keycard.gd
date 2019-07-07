@@ -1,0 +1,16 @@
+extends Sprite
+
+func _ready():
+	set_process_unhandled_key_input(false)
+
+func _on_PickUpRange_body_entered(body):
+	if "Player" in body.name:
+		set_process_unhandled_key_input(true)
+
+func _on_PickUpRange_body_exited(body):
+	if "Player" in body.name:
+		set_process_unhandled_key_input(false)
+
+func _unhandled_key_input(event):
+	if event.is_action_pressed("interact"):
+		print("pick up " + self.name)
