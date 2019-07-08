@@ -94,8 +94,35 @@ rotation = 1.5708
 [node name="StandardKeycard" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
 position = Vector2( 64, 90 )
 
-[node name="StandardKeycard2" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
-position = Vector2( 308, -19 )
+[node name="StandardKeycard3" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+position = Vector2( 71, 47 )
+
+[node name="StandardKeycard4" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+position = Vector2( 130, 27 )
+
+[node name="StandardKeycard5" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+position = Vector2( 80, 12 )
+
+[node name="StandardKeycard6" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+position = Vector2( 23, 55 )
+
+[node name="StandardKeycard7" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+position = Vector2( 206, 31 )
+
+[node name="StandardKeycard8" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+position = Vector2( 218, -7 )
+
+[node name="StandardKeycard9" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+position = Vector2( 112, -10 )
+
+[node name="StandardKeycard10" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+position = Vector2( 28, 15 )
+
+[node name="StandardSeycard2" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+position = Vector2( 251, 50 )
+
+[node name="StandardSeycardScienceKeyToHell" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+position = Vector2( 251, 50 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
