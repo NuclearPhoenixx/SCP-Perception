@@ -122,7 +122,7 @@ position = Vector2( 28, 15 )
 position = Vector2( 251, 50 )
 
 [node name="StandardSeycardScienceKeyToHell" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
-position = Vector2( 251, 50 )
+position = Vector2( 260, 27 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 

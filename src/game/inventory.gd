@@ -9,8 +9,6 @@ func pickup(item):
 		item.queue_free()
 	else:
 		print("Inventory is full!")
-	
-	print(get_item_names()) #debug
 
 func drop(item):
 	pass
@@ -39,3 +37,13 @@ func get_item_names(): #Grab all the item names in the inventory for viewing in 
 		names.append(name)
 		
 	return names
+
+func get_item_textures(): #Grab all the item textures in the inventory for viewing in hud
+	var textures = []
+	
+	for value in inventory.values():
+		var item = load(value).instance()
+		textures.append(item.texture.resource_path)
+		item.queue_free()
+	
+	return textures
