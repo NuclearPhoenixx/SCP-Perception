@@ -1,13 +1,9 @@
 extends Node
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var standard_keycard = preload("res://scenes/items/keycard1.tscn")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func spawn_keycard(name, position):
+	var card = standard_keycard.instance()
+	card.name = name
+	card.position = position
+	get_tree().get_root().get_node("World/Navigation/Map/Items").add_child(card)

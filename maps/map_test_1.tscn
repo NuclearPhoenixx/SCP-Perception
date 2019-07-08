@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://textures/tilemap/tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/facility/door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/items/keycard1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/hud.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/enemies/scp-017.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/inventory.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/enemies/scp-017.tscn" type="PackedScene" id=7]
 
 [node name="World" type="Node2D"]
 
@@ -90,6 +91,7 @@ position = Vector2( 1032, 656 )
 rotation = 1.5708
 
 [node name="Items" type="Node2D" parent="Navigation/Map"]
+editor/display_folded = true
 
 [node name="StandardKeycard" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
 position = Vector2( 64, 90 )
@@ -126,8 +128,11 @@ position = Vector2( 260, 27 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
+[node name="Inventory" parent="HUD" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 411.079, 36.5649 )
 
-[node name="SCP-017" parent="." instance=ExtResource( 6 )]
+[node name="SCP-017" parent="." instance=ExtResource( 7 )]
 position = Vector2( 264, 375 )

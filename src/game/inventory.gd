@@ -1,17 +1,28 @@
 extends Node
 
+onready var player = get_tree().get_root().find_node("Player", true, false)
 var inventory = {}
-var INVENTORY_SIZE = 8 #max number of items in inventory
+
+signal update_inventory
+
+func _ready():
+	game.connect("death", self, "delete_inventory")
+
+func delete_inventory(): #upon death, delete the whole inventory
+	inventory.clear()
 
 func pickup(item):
-	if inventory.size() < INVENTORY_SIZE:
+	if inventory.size() < game.inventory_size:
 		inventory[item.name] = item.filename
 		item.queue_free()
+		emit_signal("update_inventory")
 	else:
 		print("Inventory is full!")
 
-func drop(item):
-	pass
+func drop(name):
+	spawn.spawn_keycard(name, player.position)
+	inventory.erase(name)
+	emit_signal("update_inventory")
 
 func create_item_name(string): #Ugly as hell, no built-in functions for this. Dont need any more item name dicts though.
 	var numbers = ["0","1","2","3","4","5","6","7","8","9"] #Firstly remove all numbers

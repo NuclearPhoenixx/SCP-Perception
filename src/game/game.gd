@@ -6,6 +6,10 @@ var stamina_regen = .5 #stamina regeneration rate
 var exh_rate = 1 #stamina exhaustion rate
 var walk_speed = 60 #normal walking speed
 var sprint_speed = 100 #speed for sprinting
+var inventory_size = 8 #max number of items in inventory
+
+signal toggle_inventory #signal to open/close the inventory, triggered by player
+signal death #signal that the player has died
 
 func _init():
 	pause_mode = Node.PAUSE_MODE_PROCESS
@@ -22,3 +26,8 @@ func _unhandled_key_input(event):
 			settings.debug_mode = false
 		else:
 			settings.debug_mode = true
+		get_tree().set_input_as_handled()
+	
+	if event.is_action_pressed("inventory"): #show/hide inventory
+		emit_signal("toggle_inventory")
+		get_tree().set_input_as_handled()
