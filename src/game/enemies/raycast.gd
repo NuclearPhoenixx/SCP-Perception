@@ -1,20 +1,13 @@
 extends RayCast2D
 
-onready var myself = get_node("../.")
+onready var myself = get_parent()
 var target
 
-func _ready():
-	pass
-	#set_physics_process(false)
-	#add_exception(self)
-
 func _on_FOV_body_entered(body):
-	#set_physics_process(true)
 	target = body
 	enabled = true
 
 func _on_FOV_body_exited(body):
-	#set_physics_process(false)
 	enabled = false
 
 func _physics_process(delta):
@@ -23,7 +16,7 @@ func _physics_process(delta):
 		
 		if get_collider() == target:
 			myself.target = target
-			#play scare sound
+			#play scary running sound
 		else:
 			myself.target = null
 		
