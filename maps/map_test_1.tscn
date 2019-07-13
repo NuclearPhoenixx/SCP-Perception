@@ -22,13 +22,15 @@ __meta__ = {
 }
 
 [node name="Doors" type="Node2D" parent="Navigation/Map"]
-editor/display_folded = true
 
 [node name="Door" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
 editor/display_folded = true
 position = Vector2( 320, 615 )
 
-[node name="Door2" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door2" parent="Navigation/Map/Doors" groups=[
+"security_doors",
+"level2",
+] instance=ExtResource( 2 )]
 position = Vector2( 80, 104 )
 
 [node name="Door3" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
@@ -78,7 +80,10 @@ editor/display_folded = true
 position = Vector2( 264, 105 )
 scale = Vector2( 1.5, 1 )
 
-[node name="Door15" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door15" parent="Navigation/Map/Doors" groups=[
+"security_doors",
+"level1",
+] instance=ExtResource( 2 )]
 position = Vector2( 264, 327 )
 scale = Vector2( 1.5, 1 )
 
@@ -132,6 +137,7 @@ position = Vector2( 260, 27 )
 visible = false
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
+visible = false
 position = Vector2( 411.079, 36.5649 )
 
 [node name="SCP-017" parent="." instance=ExtResource( 7 )]

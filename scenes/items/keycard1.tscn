@@ -6,7 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9, 7 )
 
-[node name="StandardKeycard" type="Sprite"]
+[node name="StandardKeycard" type="Sprite" groups=[
+"level1",
+]]
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
