@@ -2,8 +2,10 @@ extends ColorRect
 
 onready var image = get_node("ItemImage")
 onready var description = get_parent().get_parent().get_node("Description")
+onready var clearance = get_parent().get_parent().get_node("Description/Clearance")
 
-var item_name = "" #item name shown in inventory description
+var item_name #item name shown in inventory description
+var item_clearance #item security clearance shown in inventory description
 var inv_hover_color = Color(1,1,1,0.9)
 var inv_normal_color = Color(1,1,1,0.5)
 
@@ -25,15 +27,14 @@ func _on_Slot1_gui_input(event):
 
 func _on_Slot1_mouse_entered(): #Mouse hovering background colors
 	color = inv_hover_color
+	description.show()
 	set_process(true)
 
 func _on_Slot1_mouse_exited():
 	color = inv_normal_color
+	description.hide()
 	set_process(false)
-	description.text = ""
-
-func set_item_texture(texture):
-	image.texture = texture
 
 func _process(delta):
 	description.text = item_name
+	clearance.text = item_clearance

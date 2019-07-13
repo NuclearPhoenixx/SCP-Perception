@@ -7,7 +7,7 @@
 extents = Vector2( 9, 7 )
 
 [node name="StandardKeycard" type="Sprite" groups=[
-"level1",
+"level_1",
 ]]
 texture = ExtResource( 1 )
 script = ExtResource( 2 )

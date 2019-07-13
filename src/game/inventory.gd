@@ -13,7 +13,12 @@ func delete_inventory(): #upon death, delete the whole inventory
 
 func pickup(item):
 	if inventory.size() < game.inventory_size:
-		inventory[item.name] = item.filename
+		var clearance
+		for group in item.get_groups():
+			if "level" in group:
+				clearance = group
+			
+		inventory[item.name] = [item.filename, clearance] #save item name with path and other info
 		item.queue_free()
 		emit_signal("update_inventory")
 	else:
@@ -53,8 +58,22 @@ func get_item_textures(): #Grab all the item textures in the inventory for viewi
 	var textures = []
 	
 	for value in inventory.values():
-		var item = load(value).instance()
+		var item = load(value[0]).instance()
 		textures.append(item.texture.resource_path)
 		item.queue_free()
 	
 	return textures
+
+func get_clearance_levels():
+	var levels = []
+	
+	for value in inventory.values():
+		var c = ""
+		
+		for i in value: #save highest security clearance
+			if "level" in i and int(i) > int(c):
+				c = i
+			
+		levels.append("Security " + c.capitalize())
+	
+	return levels

@@ -3,7 +3,7 @@ extends StaticBody2D
 onready var door_sprite = get_node("DoorModel")
 onready var anim = door_sprite.get_node("DoorAnimation")
 
-var door_clearance = "none" #no clearance needed
+var door_clearance = 0 #no clearance needed
 
 func _ready():
 	set_process_unhandled_key_input(false)
@@ -12,25 +12,15 @@ func _ready():
 	
 	for group in get_groups(): #query own security level group
 		if "level" in group:
-			door_clearance = group
+			door_clearance = int(group)
 			break
 
 func check_clearance(): #spawn item, query clearance level and clean up
-	if door_clearance == "none": #check if door is open for everyone
+	if door_clearance == 0: #check if door is open for everyone
 		return true
 	
-	var inv_clearances = []
-	
-	for value in inventory.inventory.values():
-		var item = load(value).instance()
-		
-		for group in item.get_groups():
-			inv_clearances.append(group)
-		
-		item.queue_free()
-	
-	for c in inv_clearances:
-		if c == door_clearance:
+	for clearance in inventory.get_clearance_levels():
+		if int(clearance) >= door_clearance:
 			return true
 	
 	return false
