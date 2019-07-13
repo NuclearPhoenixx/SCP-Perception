@@ -2,7 +2,7 @@ extends ColorRect
 
 onready var image = get_node("ItemImage")
 onready var description = get_parent().get_parent().get_node("Description")
-onready var clearance = get_parent().get_parent().get_node("Description/Clearance")
+onready var clearance = description.get_node("Clearance")
 
 var item_name #item name shown in inventory description
 var item_clearance #item security clearance shown in inventory description
