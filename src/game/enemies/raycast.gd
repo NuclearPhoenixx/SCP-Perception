@@ -3,7 +3,7 @@ extends RayCast2D
 onready var myself = get_parent()
 var target
 
-func _on_FOV_body_entered(body):
+func _on_FOV_body_entered(body): #This only triggers when bodies with the correct layer enter (e.g. Players)
 	target = body
 	enabled = true
 

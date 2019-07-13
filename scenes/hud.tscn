@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/game/hud/stamina.gd" type="Script" id=1]
+[ext_resource path="res://scenes/inventory.tscn" type="PackedScene" id=2]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -35,3 +36,6 @@ anchor_bottom = 1.0
 margin_left = -235.0
 margin_top = -14.0
 text = "Press \"N\" to toggle debugging mode."
+
+[node name="Inventory" parent="." instance=ExtResource( 2 )]
+visible = false
