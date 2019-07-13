@@ -20,12 +20,14 @@ func dynamic_move():
 	path = nav.get_simple_path(position, target.position)
 	var distance = path[1] - position
 	
-	if distance.length() == 0:
+	while distance.length() == 0:
 		path.remove(1)
-		return
+		if path.size() <= 1:
+			return
+		distance = path[1] - position
 	
-	move(distance)
 	look_at(target.position)
+	move(distance)
 
 func finish_move():
 	var distance = path[0] - position
@@ -58,7 +60,7 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i).collider
 		if collision.is_in_group("doors"):
 			open_door(collision)
-		elif speed == IDLE_SPEED and path.size() != 0: #if collision while idle moving, stop and clear array to avoid issues
+		elif path.size() != 0: # and speed == IDLE_SPEED #if collision while idle moving, stop and clear array to avoid issues
 			path.resize(0)
 	
 	# DEBUG STUFF #
