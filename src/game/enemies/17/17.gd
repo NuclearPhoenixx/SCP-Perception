@@ -4,7 +4,7 @@ onready var nav = get_tree().get_root().find_node("Navigation", true, false)
 onready var pathfinding = get_node("DebugPathfinding")
 onready var idle_timer = get_node("IdleTimer")
 
-var MOVE_SPEED = 80
+var MOVE_SPEED = 90
 var IDLE_SPEED = 40
 var IDLE_DISTANCE = 120
 
