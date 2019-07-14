@@ -28,8 +28,8 @@ editor/display_folded = true
 position = Vector2( 320, 615 )
 
 [node name="Door2" parent="Navigation/Map/Doors" groups=[
-"security_doors",
 "level_2",
+"security_doors",
 ] instance=ExtResource( 2 )]
 position = Vector2( 80, 104 )
 
@@ -140,7 +140,7 @@ position = Vector2( 260, 27 )
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 411.079, 36.5649 )
+position = Vector2( 330, 30 )
 
 [node name="SCP-017" parent="." instance=ExtResource( 6 )]
 position = Vector2( 264, 375 )

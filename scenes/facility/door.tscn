@@ -84,7 +84,7 @@ tracks/5/keys = {
 "values": [ Color( 0.0431373, 0.784314, 0, 1 ), Color( 0.941176, 0.815686, 0, 1 ), Color( 0.941176, 0.815686, 0, 1 ), Color( 0.717647, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "door_error"
 length = 0.8
 step = 0.01
@@ -113,13 +113,13 @@ tracks/1/keys = {
 "values": [ Color( 0.87451, 1, 0, 1 ), Color( 0.717647, 0, 0, 1 ), Color( 0.87451, 1, 0, 1 ), Color( 0.717647, 0, 0, 1 ), Color( 0.87451, 1, 0, 1 ), Color( 0.717647, 0, 0, 1 ) ]
 }
 
-[sub_resource type="OccluderPolygon2D" id=4]
+[sub_resource type="OccluderPolygon2D" id=5]
 polygon = PoolVector2Array( -16, -4, -16, 4, 0, 4, 0, -4 )
 
-[sub_resource type="OccluderPolygon2D" id=5]
+[sub_resource type="OccluderPolygon2D" id=6]
 polygon = PoolVector2Array( 0, -4, 16, -4, 16, 4, 0, 4 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 16, 15 )
 
 [node name="Door" type="StaticBody2D" groups=[
@@ -157,13 +157,13 @@ hframes = 13
 
 [node name="DoorAnimation" type="AnimationPlayer" parent="DoorModel"]
 anims/door_anim = SubResource( 3 )
-anims/door_error = SubResource( 7 )
+anims/door_error = SubResource( 4 )
 
 [node name="LightOccluderLeft" type="LightOccluder2D" parent="."]
-occluder = SubResource( 4 )
+occluder = SubResource( 5 )
 
 [node name="LightOccluderRight" type="LightOccluder2D" parent="."]
-occluder = SubResource( 5 )
+occluder = SubResource( 6 )
 
 [node name="InteractionArea" type="Area2D" parent="."]
 editor/display_folded = true
@@ -171,6 +171,6 @@ input_pickable = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_InteractionArea_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_InteractionArea_body_exited"]

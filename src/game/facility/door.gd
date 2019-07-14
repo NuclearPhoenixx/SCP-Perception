@@ -54,8 +54,9 @@ func _unhandled_key_input(event):
 		door_control()
 
 func _on_InteractionArea_body_entered(body):
-	if "Player" in body.name:
+	if body.is_in_group("player"):
 		set_process_unhandled_key_input(true)
 
 func _on_InteractionArea_body_exited(body):
-	set_process_unhandled_key_input(false)
+	if body.is_in_group("player"):
+		set_process_unhandled_key_input(false)
