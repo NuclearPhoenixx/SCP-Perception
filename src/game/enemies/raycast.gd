@@ -3,12 +3,14 @@ extends RayCast2D
 onready var myself = get_parent()
 var target
 
-func _on_FOV_body_entered(body): #This only triggers when bodies with the correct layer enter (e.g. Players)
-	target = body
-	enabled = true
+func _on_TargetArea_body_entered(body):
+	if body.is_in_group("player"):
+		target = body
+		enabled = true
 
-func _on_FOV_body_exited(body):
-	enabled = false
+func _on_TargetArea_body_exited(body):
+	if body.is_in_group("player"):
+		enabled = false
 
 func _physics_process(delta):
 	if enabled:

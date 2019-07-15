@@ -11,8 +11,13 @@ var inventory_size = 8 #max number of items in inventory
 signal toggle_inventory #signal to open/close the inventory, triggered by player
 signal death #signal that the player has died
 
-func _init():
+func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
+	connect("death", self, "death")
+
+func death():
+	print("You died!")
+	get_tree().reload_current_scene()
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("ui_cancel"): #quit game

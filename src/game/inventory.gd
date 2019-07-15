@@ -25,7 +25,7 @@ func pickup(item):
 		print("Inventory is full!")
 
 func drop(name):
-	spawn.spawn_keycard(name, player.position)
+	spawn.spawn_keycard(name, player.position, player.rotation - PI/2)
 	inventory.erase(name)
 	emit_signal("update_inventory")
 
