@@ -28,6 +28,7 @@ inventory="*res://src/game/inventory.gd"
 
 [debug]
 
+settings/stdout/print_fps=true
 gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/return_value_discarded=false

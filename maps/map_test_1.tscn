@@ -103,9 +103,6 @@ position = Vector2( 928, 321 )
 
 [node name="Items" type="Node2D" parent="Navigation/Map"]
 editor/display_folded = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="StandardKeycard" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
 position = Vector2( 64, 90 )
@@ -146,4 +143,4 @@ position = Vector2( 260, 27 )
 position = Vector2( 330, 30 )
 
 [node name="SCP-017" parent="." instance=ExtResource( 6 )]
-position = Vector2( 206, 760 )
+position = Vector2( 208, 765 )

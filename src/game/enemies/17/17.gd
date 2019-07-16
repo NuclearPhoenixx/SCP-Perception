@@ -63,8 +63,9 @@ func _physics_process(delta):
 			path.resize(0)
 		elif collision.is_in_group("doors"):
 			open_door(collision)
-		elif speed == IDLE_SPEED:
+		elif speed == IDLE_SPEED: #if any other collision while idle moving clear path
 			path.resize(0)
+		
 		#if (path.size() != 0 and speed == IDLE_SPEED) or collision.is_in_group("security_doors"):
 		#	path.resize(0)
 		#elif collision.is_in_group("doors"):

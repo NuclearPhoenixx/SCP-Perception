@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/game/player/player.gd" type="Script" id=1]
 [ext_resource path="res://textures/player_placeholder.png" type="Texture" id=2]
-[ext_resource path="res://textures/light2.png" type="Texture" id=3]
+[ext_resource path="res://textures/lights_high/light2.png" type="Texture" id=3]
 [ext_resource path="res://src/game/hud/debug_showhide.gd" type="Script" id=4]
 [ext_resource path="res://src/game/player/camera.gd" type="Script" id=5]
 
