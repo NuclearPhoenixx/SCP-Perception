@@ -1,7 +1,7 @@
 extends Node
 
 #PLAYER VARIABLES
-var stamina = -1 #tracks current stamina, -1 for full stamina on spawn
+const stamina = 150 #maximum player stamina level
 const stamina_regen = .5 #stamina regeneration rate
 const exh_rate = 1 #stamina exhaustion rate
 const walk_speed = 60 #normal walking speed
@@ -9,6 +9,8 @@ const walk_back_factor = .5 #speed when walking backwards
 const walk_back_angle = 2*PI/3 #angle at which the backwards walking buff takes action
 const sprint_speed = 100 #speed for sprinting
 const inventory_size = 8 #max number of items in inventory
+
+var player_exhausted = false #true if the player is too exhausted to be sprinting
 
 signal toggle_inventory #signal to open/close the inventory, triggered by player
 signal death #signal that the player has died

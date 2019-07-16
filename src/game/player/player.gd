@@ -1,11 +1,9 @@
 extends KinematicBody2D
 
-var current_sprint_speed = game.sprint_speed #on spawn use normal sprint speed
-
 func move(direction):
 	var speed = game.walk_speed
-	if Input.is_action_pressed("sprint"): # check if player is sprinting
-		speed = current_sprint_speed
+	if Input.is_action_pressed("sprint") and !game.player_exhausted: #sprint if not exhausted
+		speed = game.sprint_speed
 	
 	if abs(direction.angle_to(get_global_mouse_position() - position)) > game.walk_back_angle:
 		speed *= game.walk_back_factor
