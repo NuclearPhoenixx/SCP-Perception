@@ -27,10 +27,7 @@ func _unhandled_key_input(event):
 		get_tree().reload_current_scene()
 	
 	if event.is_action_pressed("debug"): #enable debugging mode
-		if settings.debug_mode:
-			settings.debug_mode = false
-		else:
-			settings.debug_mode = true
+		settings.emit_signal("debug_mode")
 		get_tree().set_input_as_handled()
 	
 	if event.is_action_pressed("inventory"): #show/hide inventory
