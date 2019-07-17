@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
 func move(direction):
-	var speed = game.walk_speed
+	var speed = game.WALK_SPEED
 	if Input.is_action_pressed("sprint") and !game.player_exhausted: #sprint if not exhausted
-		speed = game.sprint_speed
+		speed = game.SPRINT_SPEED
 	
-	if abs(direction.angle_to(get_global_mouse_position() - position)) > game.walk_back_angle:
-		speed *= game.walk_back_factor
+	if abs(direction.angle_to(get_global_mouse_position() - position)) > game.WALK_BACK_ANGLE:
+		speed *= game.WALK_BACK_FACTOR
 	
 	move_and_slide(direction * speed)
 

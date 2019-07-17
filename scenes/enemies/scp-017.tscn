@@ -53,6 +53,7 @@ shape = SubResource( 2 )
 [node name="DebugPathfinding" type="Line2D" parent="."]
 width = 2.0
 default_color = Color( 1, 0.984314, 0, 1 )
+texture_mode = 4654592
 script = ExtResource( 3 )
 
 [node name="RayCast" type="RayCast2D" parent="."]
@@ -60,7 +61,6 @@ cast_to = Vector2( 0, 0 )
 script = ExtResource( 4 )
 
 [node name="TargetArea" type="Area2D" parent="."]
-editor/display_folded = true
 input_pickable = false
 monitorable = false
 
@@ -71,14 +71,15 @@ shape = SubResource( 3 )
 wait_time = 10.0
 autostart = true
 
-[node name="DeathBox" type="Area2D" parent="."]
+[node name="KillArea" type="Area2D" parent="."]
+editor/display_folded = true
 input_pickable = false
 monitorable = false
 script = ExtResource( 5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
 shape = SubResource( 4 )
 [connection signal="body_entered" from="TargetArea" to="RayCast" method="_on_TargetArea_body_entered"]
 [connection signal="body_exited" from="TargetArea" to="RayCast" method="_on_TargetArea_body_exited"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]
-[connection signal="body_entered" from="DeathBox" to="DeathBox" method="_on_DeathBox_body_entered"]
+[connection signal="body_entered" from="KillArea" to="KillArea" method="_on_KillArea_body_entered"]

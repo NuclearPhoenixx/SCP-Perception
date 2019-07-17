@@ -12,7 +12,7 @@ func delete_inventory(): #upon death, delete the whole inventory
 	inventory.clear()
 
 func pickup(item):
-	if inventory.size() < game.inventory_size:
+	if inventory.size() < game.INVENTORY_SIZE:
 		var clearance
 		for group in item.get_groups():
 			if "level" in group:

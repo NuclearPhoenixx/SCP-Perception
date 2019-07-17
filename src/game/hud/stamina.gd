@@ -1,8 +1,8 @@
 extends ProgressBar
 
 func _ready():
-	max_value = game.stamina
-	value = game.stamina
+	max_value = game.STAMINA
+	value = game.STAMINA
 
 func _physics_process(delta):
 	if value == 0: #if stamina is 0 then the player is exhausted and stops sprinting
@@ -13,6 +13,6 @@ func _physics_process(delta):
 		game.player_exhausted = false
 	
 	if Input.is_action_pressed("sprint") and !game.player_exhausted:
-		value -= 1
+		value -= game.STAMINA_EXHAUST
 	else:
-		value += .5
+		value += game.STAMINA_REGEN

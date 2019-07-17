@@ -109,6 +109,12 @@ drop_item={
  ]
 }
 
+[physics]
+
+2d/default_gravity=0
+2d/default_linear_damp=10.0
+2d/default_angular_damp=10
+
 [rendering]
 
 quality/intended_usage/framebuffer_allocation=0

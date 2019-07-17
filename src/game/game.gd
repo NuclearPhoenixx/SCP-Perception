@@ -1,14 +1,14 @@
 extends Node
 
 #PLAYER VARIABLES
-const stamina = 150 #maximum player stamina level
-const stamina_regen = .5 #stamina regeneration rate
-const exh_rate = 1 #stamina exhaustion rate
-const walk_speed = 60 #normal walking speed
-const walk_back_factor = .5 #speed when walking backwards
-const walk_back_angle = 2*PI/3 #angle at which the backwards walking buff takes action
-const sprint_speed = 100 #speed for sprinting
-const inventory_size = 8 #max number of items in inventory
+const STAMINA = 150 #maximum player stamina level
+const STAMINA_REGEN = .6 #stamina regeneration rate
+const STAMINA_EXHAUST = 1 #stamina exhaustion rate
+const WALK_SPEED = 60 #normal walking speed
+const WALK_BACK_FACTOR = .5 #speed when walking backwards
+const WALK_BACK_ANGLE = 2*PI/3 #angle at which the backwards walking buff takes action
+const SPRINT_SPEED = 100 #speed for sprinting
+const INVENTORY_SIZE = 8 #max number of items in inventory
 
 var player_exhausted = false #true if the player is too exhausted to be sprinting
 
