@@ -40,3 +40,10 @@ drag_margin_v_enabled = false
 smoothing_enabled = true
 smoothing_speed = 10.0
 script = ExtResource( 5 )
+
+[node name="PlayerSound" type="AudioStreamPlayer2D" parent="."]
+bus = "Player"
+
+[node name="Timer" type="Timer" parent="PlayerSound"]
+[connection signal="finished" from="PlayerSound" to="." method="_on_PlayerSound_finished"]
+[connection signal="timeout" from="PlayerSound/Timer" to="." method="_on_Timer_timeout"]

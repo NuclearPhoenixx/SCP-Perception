@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="SCP: Perception"
+config/name="SCP - PERCEPTION"
 run/main_scene="res://maps/map_test_1.tscn"
 config/icon="res://icon.png"
 
@@ -25,6 +25,7 @@ game="*res://src/game/game.gd"
 spawn="*res://src/game/spawn.gd"
 settings="*res://src/settings.gd"
 inventory="*res://src/game/inventory.gd"
+sound="*res://src/sounds/sound_manager.gd"
 
 [debug]
 

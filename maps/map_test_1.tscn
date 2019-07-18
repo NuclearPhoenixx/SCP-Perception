@@ -4,9 +4,9 @@
 [ext_resource path="res://scenes/facility/door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/items/keycard1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/hud.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/enemies/scp-017.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/game/effects/canvas_mod.gd" type="Script" id=7]
+[ext_resource path="res://src/game/effects/canvas_mod.gd" type="Script" id=5]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/enemies/scp-017.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/enemies/scp-173.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -143,6 +143,7 @@ position = Vector2( 251, 50 )
 position = Vector2( 260, 27 )
 
 [node name="FacilityTestBox" type="RigidBody2D" parent="Navigation/Map"]
+editor/display_folded = true
 position = Vector2( 150, 55 )
 linear_damp = 25.0
 angular_damp = 25.0
@@ -162,17 +163,17 @@ color = Color( 0.439216, 0.345098, 0.345098, 1 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 330, 30 )
-
-[node name="SCP-017" parent="." instance=ExtResource( 6 )]
-position = Vector2( 208, 765 )
-
 [node name="CanvasMod" type="CanvasModulate" parent="."]
-script = ExtResource( 7 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 330, 30 )
+
+[node name="SCP-017" parent="." instance=ExtResource( 7 )]
+position = Vector2( 208, 765 )
 
 [node name="SCP-173" parent="." instance=ExtResource( 8 )]
 position = Vector2( 174, 12 )
