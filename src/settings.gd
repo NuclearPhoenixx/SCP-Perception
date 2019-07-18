@@ -1,16 +1,13 @@
 extends Node
 
-signal debug_mode #to signal that debugging mode has been toggled
-
 #SETTINGS
 var debug_mode = false
 var zoom_res = .05 #resolution of a single camera zoom. makes it faster or slower
 
 func _ready():
-	connect("debug_mode", self, "toggle_debug")
+	pause_mode = Node.PAUSE_MODE_PROCESS
 
-func toggle_debug():
-	if debug_mode:
-		debug_mode = false
-	else:
-		debug_mode = true
+func _unhandled_key_input(event):
+	if event.is_action_pressed("debug"): #enable debugging mode
+		get_tree().set_input_as_handled()
+		debug_mode = !debug_mode

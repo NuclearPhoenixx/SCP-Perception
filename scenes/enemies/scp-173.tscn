@@ -30,6 +30,7 @@ shape = SubResource( 1 )
 [node name="DebugPathfinding" type="Line2D" parent="."]
 width = 2.0
 default_color = Color( 1, 0.984314, 0, 1 )
+texture_mode = 4654592
 script = ExtResource( 3 )
 
 [node name="RayCast" type="RayCast2D" parent="."]
@@ -47,6 +48,7 @@ script = ExtResource( 5 )
 shape = SubResource( 3 )
 
 [node name="IdleTimer" type="Timer" parent="."]
+wait_time = 10.0
 [connection signal="body_entered" from="TargetArea" to="RayCast" method="_on_TargetArea_body_entered"]
 [connection signal="body_exited" from="TargetArea" to="RayCast" method="_on_TargetArea_body_exited"]
 [connection signal="body_entered" from="KillArea" to="KillArea" method="_on_KillArea_body_entered"]

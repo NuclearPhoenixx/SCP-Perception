@@ -10,10 +10,21 @@ func _ready():
 	get_node("LightOccluderLeft").occluder = get_node("LightOccluderLeft").occluder.duplicate()
 	get_node("LightOccluderRight").occluder = get_node("LightOccluderRight").occluder.duplicate()
 	
-	for group in get_groups(): #query own security level group
+	#query own security level group
+	for group in get_groups():
 		if "level" in group:
 			door_clearance = int(group)
 			break
+	
+	#set right door colors for error animation
+	var color = get_node("DoorStatus").color
+	var a = [0,1]
+	var b = [1,3,5]
+	var animation = anim.get_animation("door_error")
+	
+	for i in a:
+		for j in b:
+			animation.track_set_key_value(i, j, color)
 
 func check_clearance(): #spawn item, query clearance level and clean up
 	if door_clearance == 0: #check if door is open for everyone
@@ -25,16 +36,7 @@ func check_clearance(): #spawn item, query clearance level and clean up
 	
 	return false
 
-func door_error():
-	var color = get_node("DoorStatus").color
-	var a = [0,1]
-	var b = [1,3,5]
-	var animation = anim.get_animation("door_error")
-	
-	for i in a:
-		for j in b:
-			animation.track_set_key_value(i, j, color)
-	
+func door_error(): #security clearance not adequate
 	anim.play("door_error")
 
 func door_control():

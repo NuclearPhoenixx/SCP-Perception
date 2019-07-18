@@ -1,12 +1,16 @@
 extends KinematicBody2D
 
+## MOVEMENT STILL PRETTY BUGGY
+
 onready var nav = get_tree().get_root().find_node("Navigation", true, false)
 onready var pathfinding = get_node("DebugPathfinding")
 onready var idle_timer = get_node("IdleTimer")
+onready var attack_collision = get_node("KillArea/CollisionShape2D")
+onready var blink_meter = get_tree().get_root().find_node("BlinkMeter", true, false)
 
-var MOVE_SPEED = 120
+var MOVE_SPEED = 600
 var IDLE_SPEED = MOVE_SPEED - 1 ###
-var IDLE_DISTANCE = 40
+var IDLE_DISTANCE = 100
 
 var target = null
 var path = PoolVector2Array()
@@ -26,8 +30,14 @@ func dynamic_move():
 			return
 		distance = path[1] - position
 	
-	look_at(target.position)
-	move(distance)
+	var a = (position - target.position).normalized() #only move if player is not looking
+	var b = Vector2(1,0).rotated(target.rotation)
+	if a.dot(b) < 0 or blink_meter.player_blink:
+		attack_collision.disabled = false
+		look_at(target.position)
+		move(distance)
+	else:
+		attack_collision.disabled = true
 
 func finish_move():
 	var distance = path[0] - position
@@ -38,6 +48,7 @@ func finish_move():
 			return
 		distance = path[0] - position
 	
+	look_at(path[0])
 	move(distance)
 
 func open_door(door): #this function will probably kill everybody
@@ -45,7 +56,7 @@ func open_door(door): #this function will probably kill everybody
 	print("FBI, open up!") #
 
 func _physics_process(delta):
-	if typeof(target) != 0: #and target not looking at me/blinking #if target node present follow it
+	if typeof(target) != 0:
 		speed = MOVE_SPEED
 		idle_timer.paused = true
 		dynamic_move()

@@ -1,6 +1,6 @@
 extends RayCast2D
 
-onready var myself = get_parent()
+onready var parent = get_parent()
 var target
 
 func _on_TargetArea_body_entered(body):
@@ -10,6 +10,7 @@ func _on_TargetArea_body_entered(body):
 
 func _on_TargetArea_body_exited(body):
 	if body.is_in_group("player"):
+		parent.target = null
 		enabled = false
 
 func _physics_process(delta):
@@ -17,10 +18,10 @@ func _physics_process(delta):
 		cast_to = to_local(target.position)
 		
 		if get_collider() == target:
-			myself.target = target
+			parent.target = target
 			#play scary running sound
 		else:
-			myself.target = null
+			parent.target = null
 		
 		update()
 

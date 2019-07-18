@@ -1,6 +1,5 @@
 extends ColorRect
 
-onready var image = get_node("ItemImage")
 onready var description = get_parent().get_parent().get_node("Description")
 onready var clearance = description.get_node("Clearance")
 

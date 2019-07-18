@@ -3,15 +3,12 @@ extends Control
 onready var slots = get_node("InventorySlots")
 
 func _ready():
-	game.connect("toggle_inventory", self, "toggle_inventory")
 	inventory.connect("update_inventory", self, "update_inventory")
 
 func toggle_inventory():
 	if visible:
-		set_process_unhandled_key_input(false)
 		hide()
 	else:
-		set_process_unhandled_key_input(true)
 		show()
 
 func update_inventory(): #this function essentially draws the whole inventory items and stuff
@@ -26,8 +23,13 @@ func update_inventory(): #this function essentially draws the whole inventory it
 		if index < size: #only do this for picked up number of items
 			slot.item_name = names[index]
 			slot.item_clearance = clearances[index]
-			slot.image.texture = load(textures[index])
+			slot.get_node("ItemImage").texture = load(textures[index])
 		else:
 			slot.item_name = ""
 			slot.item_clearance = ""
-			slot.image.texture = null
+			slot.get_node("ItemImage").texture = null
+
+func _unhandled_key_input(event):
+	if event.is_action_pressed("inventory"): #show/hide inventory
+		get_tree().set_input_as_handled()
+		toggle_inventory()

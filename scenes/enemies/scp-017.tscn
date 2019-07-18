@@ -61,6 +61,7 @@ cast_to = Vector2( 0, 0 )
 script = ExtResource( 4 )
 
 [node name="TargetArea" type="Area2D" parent="."]
+editor/display_folded = true
 input_pickable = false
 monitorable = false
 

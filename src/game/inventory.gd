@@ -1,15 +1,8 @@
 extends Node
 
-onready var player = get_tree().get_root().find_node("Player", true, false)
 var inventory = {}
 
 signal update_inventory
-
-func _ready():
-	game.connect("death", self, "delete_inventory")
-
-func delete_inventory(): #upon death, delete the whole inventory
-	inventory.clear()
 
 func pickup(item):
 	if inventory.size() < game.INVENTORY_SIZE:
@@ -24,7 +17,12 @@ func pickup(item):
 	else:
 		print("Inventory is full!")
 
+func _ready():
+	connect("tree_entered", self, "update_player")
+
 func drop(name):
+	var player = get_tree().get_root().find_node("Player", true, false)
+
 	spawn.spawn_keycard(name, player.position, player.rotation - PI/2)
 	inventory.erase(name)
 	emit_signal("update_inventory")
