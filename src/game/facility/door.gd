@@ -2,6 +2,8 @@ extends StaticBody2D
 
 onready var door_sprite = get_node("DoorModel")
 onready var anim = door_sprite.get_node("DoorAnimation")
+onready var door_sound = get_node("DoorSound")
+onready var key_sound = get_node("KeycardSound")
 
 var door_clearance = 0 #no clearance needed
 
@@ -26,12 +28,14 @@ func _ready():
 		for j in b:
 			animation.track_set_key_value(i, j, color)
 
-func check_clearance(): #spawn item, query clearance level and clean up
+func check_clearance(): #query clearance level from inventory
 	if door_clearance == 0: #check if door is open for everyone
 		return true
 	
 	for clearance in inventory.get_clearance_levels():
 		if int(clearance) >= door_clearance:
+			key_sound.stream = sound.keycard_use[0] #if adequate play OK sound
+			key_sound.play(.4)
 			return true
 	
 	return false
@@ -45,10 +49,16 @@ func door_control():
 			door_error()
 			return
 		
+		var randint = round(rand_range(0,2))
+		
 		if door_sprite.frame == 0: #closed
 			anim.play_backwards("door_anim")
-		else: #open
+			door_sound.stream = sound.door_open[randint]
+			door_sound.play(.3)
+		else: #opened
 			anim.play("door_anim")
+			door_sound.stream = sound.door_close[randint]
+			door_sound.play(0)
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("interact"):

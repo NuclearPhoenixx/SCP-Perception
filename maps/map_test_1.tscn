@@ -33,8 +33,8 @@ editor/display_folded = true
 position = Vector2( 320, 615 )
 
 [node name="Door2" parent="Navigation/Map/Doors" groups=[
-"security_doors",
 "level_2",
+"security_doors",
 ] instance=ExtResource( 2 )]
 position = Vector2( 80, 104 )
 
