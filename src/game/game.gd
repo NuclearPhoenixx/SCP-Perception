@@ -12,15 +12,17 @@ const INVENTORY_SIZE = 8 #max number of items in inventory
 const BLINK_RATE = .2 #this affects the time it takes for the player to blink
 const BLINK_TIME = .15 #player has eyes closed for this amount of time when blinking
 
-func death():
-	print("You died!")
-	inventory.inventory.clear() #delete inventory
-	get_tree().reload_current_scene()
+signal death #signal launched when player dies
+
+func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("ui_cancel"): #quit game
 		get_tree().quit()
 	
 	if event.is_action_pressed("reset"): #reset scene
-		get_tree().set_input_as_handled()
-		get_tree().reload_current_scene()
+		var tree = get_tree()
+		tree.set_input_as_handled()
+		tree.paused = false
+		tree.reload_current_scene()

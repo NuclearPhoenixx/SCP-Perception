@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/game/hud/stamina.gd" type="Script" id=1]
 [ext_resource path="res://src/game/effects/blink.gd" type="Script" id=2]
 [ext_resource path="res://scenes/inventory.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/game/hud/death_message.gd" type="Script" id=4]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -75,4 +76,24 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="HUDSound" type="AudioStreamPlayer2D" parent="."]
+bus = "HUD"
+
+[node name="DeathMessage" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -107.0
+margin_top = -24.0
+margin_right = 107.0
+margin_bottom = 24.0
+text = "YOU DIED
+
+Press \"r\" to restart the game!"
+align = 1
+uppercase = true
+script = ExtResource( 4 )
 [connection signal="timeout" from="BlinkMeter/BlinkTime" to="BlinkMeter" method="_on_BlinkTime_timeout"]
