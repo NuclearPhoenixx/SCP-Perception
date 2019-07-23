@@ -1,77 +1,38 @@
 extends Node
 
-var inventory = {}
+var inventory = {} #PLAYER INVENTORY
 
-signal update_inventory
+signal item_dropped #optional: just update the inventory change instead of everything?
+signal item_grabbed #in regard of performance pretty unimportant though
+
+# ITEM STATS THAT <NEED> TO BE DEFINED FOR THIS TO WORK:
+# -> bool has_clearance
+# -> String item_name
+# -> string item_description
 
 func pickup(item):
 	if inventory.size() < game.INVENTORY_SIZE:
-		var clearance
-		for group in item.get_groups():
-			if "level" in group:
-				clearance = group
+		var clearance = -1
+		if item.has_clearance:
+			clearance = item.clearance
 			
-		inventory[item.name] = [item.filename, clearance] #save item name with path and other info
+		inventory[item.name] = {} #save item name with path and other info
+		inventory[item.name]["item_name"] = item.item_name
+		inventory[item.name]["item_description"] = item.description
+		inventory[item.name]["item_clearance"] = clearance
+		inventory[item.name]["filename"] = item.filename
+		inventory[item.name]["path"] = item.get_parent().get_path()
+		inventory[item.name]["texture"] = item.texture.resource_path
+		
 		item.queue_free()
-		emit_signal("update_inventory")
+		emit_signal("item_grabbed")
 	else:
 		print("Inventory is full!")
 
-func _ready():
-	connect("tree_entered", self, "update_player")
-
 func drop(name):
-	var player = get_tree().get_root().find_node("Player", true, false)
-
-	spawn.spawn_keycard(name, player.position, player.rotation - PI/2)
-	inventory.erase(name)
-	emit_signal("update_inventory")
-
-func create_item_name(string): #Ugly as hell, no built-in functions for this. Dont need any more item name dicts though.
-	var numbers = ["0","1","2","3","4","5","6","7","8","9"] #Firstly remove all numbers
-	for n in numbers:
-		string = string.replace(n, "")
-	
-	var i = 0
-	var replace_counter = 0
-	
-	for s in string: #Then add space in front of uppercase char
-		if s.to_lower() != s and i != 0:
-			string = string.insert(i + replace_counter, " ")
-			replace_counter += 1
-		i += 1
-	
-	return string
-
-func get_item_names(): #Grab all the item names in the inventory for viewing in hud
-	var names = []
-	
-	for key in inventory.keys():
-		var name = create_item_name(key)
-		names.append(name)
-		
-	return names
-
-func get_item_textures(): #Grab all the item textures in the inventory for viewing in hud
-	var textures = []
-	
-	for value in inventory.values():
-		var item = load(value[0]).instance()
-		textures.append(item.texture.resource_path)
-		item.queue_free()
-	
-	return textures
-
-func get_clearance_levels():
-	var levels = []
-	
-	for value in inventory.values():
-		var c = ""
-		
-		for i in value: #save highest security clearance
-			if "level" in i and int(i) > int(c):
-				c = i
-			
-		levels.append("Security " + c.capitalize())
-	
-	return levels
+	for player in get_tree().get_nodes_in_group("player"): #drop item at every "player" node
+		var item = spawn.spawn_item(inventory[name]["filename"], inventory[name]["path"], player.position, player.rotation - PI/2)
+		item.item_name = inventory[name]["item_name"]##
+		item.description = inventory[name]["item_description"]##
+		inventory.erase(name)
+		emit_signal("item_dropped")

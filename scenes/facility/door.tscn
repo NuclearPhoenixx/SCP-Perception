@@ -1,132 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/game/facility/door.gd" type="Script" id=1]
-[ext_resource path="res://sounds/interact/keycard_use2.ogg" type="AudioStream" id=2]
+[ext_resource path="res://animations/door/door_anim.tres" type="Animation" id=2]
+[ext_resource path="res://animations/door/door_error.tres" type="Animation" id=3]
+[ext_resource path="res://animations/door/secure_door_anim.tres" type="Animation" id=4]
+[ext_resource path="res://sounds/interact/keycard_use2.ogg" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 4 )
 
 [sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/door.png-6da74c9bd08664498f84a7da8efa363c.stex"
-
-[sub_resource type="Animation" id=3]
-length = 1.05
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../CollisionShape:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.56 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../LightOccluderLeft:occluder:polygon")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ PoolVector2Array( -16, -4, -16, 4, -12, 4, -12, -4 ), PoolVector2Array( -16, -4, -16, 4, -11, 4, -11, -4 ), PoolVector2Array( -16, -4, -16, 4, -10, 4, -10, -4 ), PoolVector2Array( -16, -4, -16, 4, -9, 4, -9, -4 ), PoolVector2Array( -16, -4, -16, 4, -8, 4, -8, -4 ), PoolVector2Array( -16, -4, -16, 4, -7, 4, -7, -4 ), PoolVector2Array( -16, -4, -16, 4, -6, 4, -6, -4 ), PoolVector2Array( -16, -4, -16, 4, -5, 4, -5, -4 ), PoolVector2Array( -16, -4, -16, 4, -4, 4, -4, -4 ), PoolVector2Array( -16, -4, -16, 4, -3, 4, -3, -4 ), PoolVector2Array( -16, -4, -16, 4, -2, 4, -2, -4 ), PoolVector2Array( -16, -4, -16, 4, -1, 4, -1, -4 ), PoolVector2Array( -16, -4, -16, 4, 0, 4, 0, -4 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../LightOccluderRight:occluder:polygon")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ PoolVector2Array( 12, -4, 16, -4, 16, 4, 12, 4 ), PoolVector2Array( 11, -4, 16, -4, 16, 4, 11, 4 ), PoolVector2Array( 10, -4, 16, -4, 16, 4, 10, 4 ), PoolVector2Array( 9, -4, 16, -4, 16, 4, 9, 4 ), PoolVector2Array( 8, -4, 16, -4, 16, 4, 8, 4 ), PoolVector2Array( 7, -4, 16, -4, 16, 4, 7, 4 ), PoolVector2Array( 6, -4, 16, -4, 16, 4, 6, 4 ), PoolVector2Array( 5, -4, 16, -4, 16, 4, 5, 4 ), PoolVector2Array( 4, -4, 16, -4, 16, 4, 4, 4 ), PoolVector2Array( 3, -4, 16, -4, 16, 4, 3, 4 ), PoolVector2Array( 2, -4, 16, -4, 16, 4, 2, 4 ), PoolVector2Array( 1, -4, 16, -4, 16, 4, 1, 4 ), PoolVector2Array( 0, -4, 16, -4, 16, 4, 0, 4 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("../DoorStatus:color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.01, 1.01, 1.03 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0.0431373, 0.784314, 0, 1 ), Color( 0.941176, 0.815686, 0, 1 ), Color( 0.941176, 0.815686, 0, 1 ), Color( 0.717647, 0, 0, 1 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("../DoorStatus2:color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.01, 1.01, 1.03 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0.0431373, 0.784314, 0, 1 ), Color( 0.941176, 0.815686, 0, 1 ), Color( 0.941176, 0.815686, 0, 1 ), Color( 0.717647, 0, 0, 1 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "door_error"
-length = 0.75
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath("../DoorStatus:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1.03526, 1.07177, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0.87451, 1, 0, 1 ), Color( 0.717647, 0, 0, 1 ), Color( 0.87451, 1, 0, 1 ), Color( 0.717647, 0, 0, 1 ), Color( 0.87451, 1, 0, 1 ), Color( 0.717647, 0, 0, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../DoorStatus2:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0.87451, 1, 0, 1 ), Color( 0.717647, 0, 0, 1 ), Color( 0.87451, 1, 0, 1 ), Color( 0.717647, 0, 0, 1 ), Color( 0.87451, 1, 0, 1 ), Color( 0.717647, 0, 0, 1 ) ]
-}
-tracks/2/type = "audio"
-tracks/2/path = NodePath("../KeycardSound")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"clips": [ {
-"end_offset": 0.1,
-"start_offset": 0.2,
-"stream": ExtResource( 2 )
-} ],
-"times": PoolRealArray( 0 )
-}
 
 [sub_resource type="OccluderPolygon2D" id=5]
 polygon = PoolVector2Array( -16, -4, -16, 4, 0, 4, 0, -4 )
@@ -138,7 +22,7 @@ polygon = PoolVector2Array( 0, -4, 16, -4, 16, 4, 0, 4 )
 extents = Vector2( 16, 15 )
 
 [node name="Door" type="StaticBody2D" groups=[
-"doors",
+"door",
 ]]
 script = ExtResource( 1 )
 
@@ -154,14 +38,14 @@ margin_left = 12.0
 margin_top = 4.0
 margin_right = 16.0
 margin_bottom = 8.0
-color = Color( 0.717647, 0, 0, 1 )
+color = Color( 0.0431373, 0.784314, 0, 1 )
 
 [node name="DoorStatus2" type="ColorRect" parent="."]
 margin_left = -16.0
 margin_top = -8.0
 margin_right = -12.0
 margin_bottom = -4.0
-color = Color( 0.717647, 0, 0, 1 )
+color = Color( 0.0431373, 0.784314, 0, 1 )
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -171,8 +55,9 @@ texture = SubResource( 2 )
 hframes = 13
 
 [node name="DoorAnimation" type="AnimationPlayer" parent="DoorModel"]
-anims/door_anim = SubResource( 3 )
-anims/door_error = SubResource( 4 )
+anims/door_anim = ExtResource( 2 )
+anims/door_error = ExtResource( 3 )
+anims/secure_door_anim = ExtResource( 4 )
 
 [node name="LightOccluderLeft" type="LightOccluder2D" parent="."]
 occluder = SubResource( 5 )
@@ -185,6 +70,7 @@ max_distance = 300.0
 bus = "Environment"
 
 [node name="KeycardSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
 max_distance = 300.0
 bus = "Environment"
 

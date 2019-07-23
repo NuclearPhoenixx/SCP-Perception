@@ -1,19 +1,22 @@
 extends Node
 
-var standard_keycard = preload("res://scenes/items/keycard1.tscn")
-var mp_player = preload("res://scenes/multiplayer/mp_player.tscn")
+#const StandardKeycard = preload("res://scenes/item/keycard/keycard_level1.tscn")
+const MPPlayer = preload("res://scenes/multiplayer/mp_player.tscn") #memory optimization: dont pre-load?
 
-func spawn_keycard(name, position, rotation): #spawn any keycard
-	var card = standard_keycard.instance()
-	card.name = name
-	card.position = position
-	card.rotation = rotation
-	get_tree().get_root().get_node("World/Navigation/Map/Items").add_child(card)
-	return card
+func spawn_item(path, parent, position, rotation=0): #spawn any item
+	var item = spawn_node(path, get_node(parent))
+	item.position = position
+	item.rotation = rotation
+	return item
 
 func spawn_mp_player(name, position): #for multiplayer only
-	var player = mp_player.instance()
+	var player = MPPlayer.instance()
 	player.name = name
 	player.position = position
-	get_tree().get_root().get_node("World").add_child(player)
+	get_tree().get_root().get_node("Main/World").add_child(player)
 	return player
+
+func spawn_node(filepath, parent): #spawn just a generic node
+	var node = load(filepath).instance()
+	parent.add_child(node)
+	return node

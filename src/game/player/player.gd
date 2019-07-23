@@ -1,13 +1,14 @@
 extends KinematicBody2D
 
-onready var stamina_bar = get_tree().get_root().find_node("Stamina", true, false)
-onready var sound_player = get_node("PlayerSound")
-onready var timer = sound_player.get_node("Timer")
+onready var SoundPlayer = get_node("PlayerSound")
+onready var SoundTimer = SoundPlayer.get_node("Timer")
+
+var inv_visible = false
 
 func move(direction):
 	var speed
 	
-	if Input.is_action_pressed("sprint") and !stamina_bar.player_exhausted: #sprint if not exhausted
+	if Input.is_action_pressed("sprint") and !game.player_data["exhausted"]: #sprint if not exhausted
 		speed = game.SPRINT_SPEED
 		move_sound(sound.sprint, sound.SPRINT_DELAY) #play sprint sound
 	else:
@@ -20,27 +21,54 @@ func move(direction):
 	
 	move_and_slide(direction * speed)
 
-func _process(delta):
+""" #Better way of doing this, however, this makes movement really choppy. Why?
+var velocity = Vector2()
+	if Input.is_action_pressed("game_up"): # basic movement
+		get_tree().set_input_as_handled()
+		velocity.y -= 1
+	if Input.is_action_pressed("game_down"):
+		get_tree().set_input_as_handled()
+		velocity.y += 1
+	if Input.is_action_pressed("game_left"):
+		get_tree().set_input_as_handled()
+		velocity.x -= 1
+	if Input.is_action_pressed("game_right"):
+		get_tree().set_input_as_handled()
+		velocity.x += 1
+	
+	if velocity.length() != 0:
+		move(velocity.normalized())
+	
+	look_at(get_global_mouse_position()) # rotate head to mouse position
+"""
+
+func _physics_process(delta):
 	if Input.is_action_pressed("game_up"): # basic movement
 		get_tree().set_input_as_handled()
 		move(Vector2(0,-1))
-	elif Input.is_action_pressed("game_down"):
+	if Input.is_action_pressed("game_down"):
 		get_tree().set_input_as_handled()
 		move(Vector2(0,1))
 	if Input.is_action_pressed("game_left"):
 		get_tree().set_input_as_handled()
 		move(Vector2(-1,0))
-	elif Input.is_action_pressed("game_right"):
+	if Input.is_action_pressed("game_right"):
 		get_tree().set_input_as_handled()
 		move(Vector2(1,0))
 	
-	look_at(get_global_mouse_position()) # rotate head to mouse position
+	if !inv_visible:
+		look_at(get_global_mouse_position()) # rotate head to mouse position
+
+func _unhandled_key_input(event):
+	if event.is_action_pressed("inventory"): #if inventory visible
+		get_tree().set_input_as_handled()
+		inv_visible = !inv_visible
 
 func move_sound(stream, delay): #sound handling
-	if !sound_player.is_playing() and timer.is_stopped():
-		sound_player.stream = stream[round(rand_range(0,7))]
-		timer.start(delay)
+	if !SoundPlayer.is_playing() and SoundTimer.is_stopped():
+		SoundPlayer.stream = stream[round(rand_range(0,7))]
+		SoundTimer.start(delay)
 
 func _on_Timer_timeout():
-	sound_player.play()
-	timer.stop()
+	SoundPlayer.play()
+	SoundTimer.stop()

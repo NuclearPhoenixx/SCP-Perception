@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="SCP - PERCEPTION"
-run/main_scene="res://maps/map_test_1.tscn"
+run/main_scene="res://scenes/main_game.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -25,11 +25,12 @@ game="*res://src/game/game.gd"
 spawn="*res://src/game/spawn.gd"
 settings="*res://src/settings.gd"
 inventory="*res://src/game/inventory.gd"
-sound="*res://src/sounds/sound_manager.gd"
+sound="*res://src/sound/sound_manager.gd"
 
 [debug]
 
 settings/stdout/print_fps=true
+gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/return_value_discarded=false
 

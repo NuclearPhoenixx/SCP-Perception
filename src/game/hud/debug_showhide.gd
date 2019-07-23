@@ -1,13 +1,9 @@
 extends Node2D
 
+var toggle = false
+
+#this just toggles visibility for all nodes attached with this script upon entering debug_mode.
 func _process(delta):
-	if settings.debug_mode: #please dont judge me. i dont want to create a script only to show/hide a single node
-		if self.name == "FOV":
-			hide()
-		else:
-			show()
-	else:
-		if self.name == "FOV":
-			show()
-		else:
-			hide()
+	if toggle != settings.debug_mode:
+		visible = !visible
+		toggle = settings.debug_mode

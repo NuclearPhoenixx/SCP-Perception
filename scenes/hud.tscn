@@ -1,11 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/game/hud/stamina.gd" type="Script" id=1]
-[ext_resource path="res://src/game/effects/blink.gd" type="Script" id=2]
+[ext_resource path="res://src/game/effect/blink.gd" type="Script" id=2]
 [ext_resource path="res://scenes/inventory.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/game/hud/death_message.gd" type="Script" id=4]
+[ext_resource path="res://src/game/hud/loading_message.gd" type="Script" id=5]
+[ext_resource path="res://src/sound/hud/hud_sound.gd" type="Script" id=6]
 
 [node name="HUD" type="CanvasLayer"]
+
+[node name="DebugModeHint" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -235.0
+margin_top = -14.0
+text = "Press \"N\" to toggle debugging mode."
 
 [node name="Stamina" type="ProgressBar" parent="."]
 editor/display_folded = true
@@ -30,15 +41,6 @@ margin_top = -7.0
 margin_right = 29.5
 margin_bottom = 7.0
 text = "STAMINA"
-
-[node name="DebugModeHint" type="Label" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -235.0
-margin_top = -14.0
-text = "Press \"N\" to toggle debugging mode."
 
 [node name="BlinkMeter" type="ProgressBar" parent="."]
 editor/display_folded = true
@@ -71,29 +73,53 @@ text = "BLINKTEXTURE"
 [node name="Inventory" parent="." instance=ExtResource( 3 )]
 visible = false
 
-[node name="BlinkEffect" type="ColorRect" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="HUDSound" type="AudioStreamPlayer2D" parent="."]
-bus = "HUD"
-
-[node name="DeathMessage" type="Label" parent="."]
+[node name="DeathMessage" type="ColorRect" parent="."]
+editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -107.0
-margin_top = -24.0
-margin_right = 107.0
-margin_bottom = 24.0
+margin_left = -113.5
+margin_top = -32.5
+margin_right = 113.5
+margin_bottom = 32.5
+color = Color( 0.152941, 0.152941, 0.152941, 1 )
+script = ExtResource( 4 )
+
+[node name="MessageText" type="Label" parent="DeathMessage"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 text = "YOU DIED
 
 Press \"r\" to restart the game!"
 align = 1
+valign = 1
 uppercase = true
-script = ExtResource( 4 )
+
+[node name="LoadingMessage" type="ColorRect" parent="."]
+editor/display_folded = true
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.0
+margin_top = -20.0
+margin_right = 49.0
+margin_bottom = 20.0
+color = Color( 0.152941, 0.152941, 0.152941, 1 )
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="LoadingMessage"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "loading..."
+align = 1
+valign = 1
+uppercase = true
+
+[node name="HUDSound" type="AudioStreamPlayer" parent="."]
+bus = "HUD"
+script = ExtResource( 6 )
 [connection signal="timeout" from="BlinkMeter/BlinkTime" to="BlinkMeter" method="_on_BlinkTime_timeout"]
