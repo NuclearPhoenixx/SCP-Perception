@@ -32,6 +32,10 @@ func init_player_data(): #STANDARD VALUES FOR PLAYER DATA
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("ui_cancel"): #quit game
+		#var packed_scene = PackedScene.new()
+		#packed_scene.pack(get_tree().get_current_scene())
+		#ResourceSaver.save("res://the_scene.tscn", packed_scene)
+		# This saves the whole scene in the correct format. Saves all nodes, call set_owner() prior
 		get_tree().quit()
 	
 	if event.is_action_pressed("reset"): #reset scene

@@ -1,19 +1,28 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://textures/tilemap/tilemap.tres" type="TileSet" id=1]
-[ext_resource path="res://scenes/facility/door.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/item/keycard/keycard_level1.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/item/keycard/keycard_level2.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/scp/scp-017.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/scp/scp-173.tscn" type="PackedScene" id=7]
+[ext_resource path="res://textures/decal/blood1.png" type="Texture" id=2]
+[ext_resource path="res://textures/decal/blood_drop1.png" type="Texture" id=3]
+[ext_resource path="res://textures/decal/blood_drag1.png" type="Texture" id=4]
+[ext_resource path="res://scenes/facility/door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/item/keycard/keycard_level1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/item/keycard/keycard_level2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/scp/scp-017.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/scp/scp-173.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13, 13 )
 
 [node name="World" type="Node2D"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Navigation" type="Navigation2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Map" type="TileMap" parent="Navigation"]
 tile_set = ExtResource( 1 )
@@ -24,109 +33,134 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Decals" type="Node2D" parent="Navigation/Map"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Navigation/Map/Decals"]
+position = Vector2( 97.2646, 55.1166 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Navigation/Map/Decals"]
+position = Vector2( 308.005, -9.1861 )
+texture = ExtResource( 3 )
+
+[node name="Sprite3" type="Sprite" parent="Navigation/Map/Decals"]
+position = Vector2( 261.208, 85.1625 )
+rotation = 1.5708
+scale = Vector2( 2, 1.5 )
+texture = ExtResource( 4 )
+
 [node name="Doors" type="Node2D" parent="Navigation/Map"]
 editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Door" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 320, 615 )
 
-[node name="Door2" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door2" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( 80, 106 )
 door_clearance = 2
 
-[node name="Door3" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door3" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( 48, 695 )
 
-[node name="Door4" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door4" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( 224, 696 )
 door_clearance = 1
 
-[node name="Door5" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door5" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( 928, 615 )
 
-[node name="Door6" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door6" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( -248, 256 )
 rotation = 1.5708
 
-[node name="Door7" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door7" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( -248, 320 )
 rotation = 1.5708
 
-[node name="Door8" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door8" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( -248, 480 )
 rotation = 1.5708
 
-[node name="Door9" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door9" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 120, 240 )
 rotation = 1.5708
 
-[node name="Door10" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door10" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( 232, 240 )
 rotation = 1.5708
 
-[node name="Door11" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door11" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( 120, 144 )
 rotation = 1.5708
 
-[node name="Door12" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door12" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( 296, 240 )
 rotation = 1.5708
 
-[node name="Door13" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door13" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( -152, 656 )
 rotation = 1.5708
 
-[node name="Door14" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door14" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 264, 105 )
 scale = Vector2( 1.5, 1 )
 
-[node name="Door15" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door15" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( 264, 327 )
 scale = Vector2( 1.5, 1 )
 door_clearance = 1
 
-[node name="Door16" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door16" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( 64, 615 )
 scale = Vector2( 2, 1 )
 
-[node name="Door17" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door17" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( 1032, 656 )
 rotation = 1.5708
 
-[node name="Door18" parent="Navigation/Map/Doors" instance=ExtResource( 2 )]
+[node name="Door18" parent="Navigation/Map/Doors" instance=ExtResource( 5 )]
 position = Vector2( 928, 321 )
 
 [node name="Items" type="Node2D" parent="Navigation/Map"]
 editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="KeycardLevel1" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+[node name="KeycardLevel1" parent="Navigation/Map/Items" instance=ExtResource( 6 )]
 position = Vector2( 24.3837, 15.1179 )
 
-[node name="KeycardLevel2" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+[node name="KeycardLevel2" parent="Navigation/Map/Items" instance=ExtResource( 6 )]
 position = Vector2( 201.897, 59.4963 )
 
-[node name="KeycardLevel3" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+[node name="KeycardLevel3" parent="Navigation/Map/Items" instance=ExtResource( 6 )]
 position = Vector2( 116.067, 29.2605 )
 
-[node name="KeycardLevel4" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+[node name="KeycardLevel4" parent="Navigation/Map/Items" instance=ExtResource( 6 )]
 position = Vector2( 58.521, 23.8961 )
 
-[node name="KeycardLevel5" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+[node name="KeycardLevel5" parent="Navigation/Map/Items" instance=ExtResource( 6 )]
 position = Vector2( 141.426, -10.7289 )
 
-[node name="KeycardLevel6" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+[node name="KeycardLevel6" parent="Navigation/Map/Items" instance=ExtResource( 6 )]
 position = Vector2( 63.3977, -20.4823 )
 
-[node name="KeycardLevel7" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+[node name="KeycardLevel7" parent="Navigation/Map/Items" instance=ExtResource( 6 )]
 position = Vector2( 61.9347, 74.1266 )
 
-[node name="KeycardLevel8" parent="Navigation/Map/Items" instance=ExtResource( 3 )]
+[node name="KeycardLevel8" parent="Navigation/Map/Items" instance=ExtResource( 6 )]
 position = Vector2( 252.616, -8.29048 )
 
-[node name="KeycardLevel9" parent="Navigation/Map/Items" instance=ExtResource( 4 )]
+[node name="KeycardLevel9" parent="Navigation/Map/Items" instance=ExtResource( 7 )]
 position = Vector2( 261.881, 41.4523 )
 
 [node name="FacilityTestBox" type="RigidBody2D" parent="Navigation/Map"]
@@ -148,11 +182,11 @@ margin_right = 13.0
 margin_bottom = 13.0
 color = Color( 0.439216, 0.345098, 0.345098, 1 )
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
+[node name="Player" parent="." instance=ExtResource( 8 )]
 position = Vector2( 414.035, 33.1618 )
 
-[node name="SCP-017" parent="." instance=ExtResource( 6 )]
+[node name="SCP-017" parent="." instance=ExtResource( 9 )]
 position = Vector2( 202.958, 774.639 )
 
-[node name="SCP-173" parent="." instance=ExtResource( 7 )]
+[node name="SCP-173" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1120.41, 676.145 )
