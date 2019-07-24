@@ -35,14 +35,12 @@ func door_error(): #security clearance not adequate
 
 func door_control():
 	if !Anim.is_playing():
-		var randint = round(rand_range(0,2))
-		
 		if DoorSprite.frame == 0: #closed
 			Anim.play_backwards(door_animation)
-			DoorSound.stream = sound.door_open[randint]
+			DoorSound.stream = sound.door_open[round(rand_range(0,2))]
 		else: #opened
 			Anim.play(door_animation)
-			DoorSound.stream = sound.door_close[randint]
+			DoorSound.stream = sound.door_close[round(rand_range(0,2))]
 			
 		DoorSound.play(.3)
 

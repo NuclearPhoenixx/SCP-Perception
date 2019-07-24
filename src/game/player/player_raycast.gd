@@ -57,9 +57,9 @@ func _physics_process(delta):
 			force_raycast_update()
 			
 			if get_collider() == body and !prev_scare.has(body) and !prev_spot.has(body):
-				if !scare_targets.has(body):
-					emit_signal("danger_spotted")
-					prev_spot.append(body)
-				else:
+				if scare_targets.has(body):
 					emit_signal("danger_scared")
 					prev_scare.append(body)
+				else:
+					emit_signal("danger_spotted")
+					prev_spot.append(body)

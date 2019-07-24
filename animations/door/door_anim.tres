@@ -62,7 +62,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.02, 1.01, 1.03 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.0431373, 0.784314, 0, 1 ), Color( 1, 0.4, 0, 1 ), Color( 1, 0.4, 0, 1 ), Color( 0.0431373, 0.784314, 0, 1 ) ]
+"values": [ Color( 0.0431373, 0.784314, 0, 1 ), Color( 0.901961, 0.231373, 0, 1 ), Color( 0.901961, 0.231373, 0, 1 ), Color( 0.0431373, 0.784314, 0, 1 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("../DoorStatus2:color")
@@ -74,5 +74,5 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.02, 1.01, 1.03 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.0431373, 0.784314, 0, 1 ), Color( 1, 0.4, 0, 1 ), Color( 1, 0.4, 0, 1 ), Color( 0.0431373, 0.784314, 0, 1 ) ]
+"values": [ Color( 0.0431373, 0.784314, 0, 1 ), Color( 0.901961, 0.231373, 0, 1 ), Color( 0.901961, 0.231373, 0, 1 ), Color( 0.0431373, 0.784314, 0, 1 ) ]
 }
