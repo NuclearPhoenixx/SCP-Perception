@@ -12,13 +12,13 @@ extents = Vector2( 16, 4 )
 [sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/door.png-6da74c9bd08664498f84a7da8efa363c.stex"
 
-[sub_resource type="OccluderPolygon2D" id=5]
+[sub_resource type="OccluderPolygon2D" id=3]
 polygon = PoolVector2Array( -16, -4, -16, 4, 0, 4, 0, -4 )
 
-[sub_resource type="OccluderPolygon2D" id=6]
+[sub_resource type="OccluderPolygon2D" id=4]
 polygon = PoolVector2Array( 0, -4, 16, -4, 16, 4, 0, 4 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 16, 15 )
 
 [node name="Door" type="StaticBody2D" groups=[
@@ -60,19 +60,19 @@ anims/door_error = ExtResource( 3 )
 anims/secure_door_anim = ExtResource( 4 )
 
 [node name="LightOccluderLeft" type="LightOccluder2D" parent="."]
-occluder = SubResource( 5 )
+occluder = SubResource( 3 )
 
 [node name="LightOccluderRight" type="LightOccluder2D" parent="."]
-occluder = SubResource( 6 )
+occluder = SubResource( 4 )
 
 [node name="DoorSound" type="AudioStreamPlayer2D" parent="."]
 max_distance = 300.0
-bus = "Environment"
+bus = "Sound"
 
 [node name="KeycardSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 max_distance = 300.0
-bus = "Environment"
+bus = "Sound"
 
 [node name="InteractionArea" type="Area2D" parent="."]
 editor/display_folded = true
@@ -80,6 +80,6 @@ input_pickable = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_InteractionArea_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_InteractionArea_body_exited"]

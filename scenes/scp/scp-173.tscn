@@ -31,14 +31,14 @@ width = 2.0
 default_color = Color( 1, 0.984314, 0, 1 )
 script = ExtResource( 3 )
 
-[node name="RayCast" type="RayCast2D" parent="."]
+[node name="RayCastTarget" type="RayCast2D" parent="."]
 cast_to = Vector2( 0, 0 )
 script = ExtResource( 4 )
 
-[node name="TargetArea" type="Area2D" parent="."]
+[node name="RayCastArea" type="Area2D" parent="."]
 editor/display_folded = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RayCastArea"]
 shape = SubResource( 2 )
 
 [node name="KillArea" type="Area2D" parent="."]
@@ -50,12 +50,12 @@ shape = SubResource( 3 )
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="."]
 max_distance = 400.0
-bus = "Environment"
+bus = "Sound"
 
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
-[connection signal="body_entered" from="TargetArea" to="RayCast" method="_on_TargetArea_body_entered"]
-[connection signal="body_exited" from="TargetArea" to="RayCast" method="_on_TargetArea_body_exited"]
+[connection signal="body_entered" from="RayCastArea" to="RayCastTarget" method="_on_RayCastArea_body_entered"]
+[connection signal="body_exited" from="RayCastArea" to="RayCastTarget" method="_on_RayCastArea_body_exited"]
 [connection signal="body_entered" from="KillArea" to="KillArea" method="_on_KillArea_body_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]

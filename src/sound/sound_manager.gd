@@ -9,6 +9,10 @@ var walk = []
 var sprint = []
 var keycard_use = []
 var item_pickup = []
+var item_drop = [] #########
+# ENEMY SPOTTED SOUND
+var spot_sounds = []
+var scare_sounds = []
 # DOORS
 var door_open = []
 var door_close = []
@@ -27,6 +31,8 @@ func _ready():
 	shadow_person = load_stream("scp/017/effect", 3)
 	the_sculpture = load_stream("scp/173/rattle", 3)
 	item_pickup = load_stream("interact/pick_item", 1)
+	scare_sounds = load_stream("horror/near_death/horror", 4)
+	spot_sounds = load_stream("horror/spot/horror", 3)
 	
 	load_death_sounds()
 

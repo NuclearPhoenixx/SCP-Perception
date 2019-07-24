@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/game/hud/stamina.gd" type="Script" id=1]
 [ext_resource path="res://src/game/effect/blink.gd" type="Script" id=2]
 [ext_resource path="res://scenes/inventory.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/game/hud/death_message.gd" type="Script" id=4]
 [ext_resource path="res://src/game/hud/loading_message.gd" type="Script" id=5]
-[ext_resource path="res://src/sound/hud/hud_sound.gd" type="Script" id=6]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -64,11 +63,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -46.5
+margin_left = -19.5
 margin_top = -7.0
-margin_right = 46.5
+margin_right = 19.5
 margin_bottom = 7.0
-text = "BLINKTEXTURE"
+text = "BLINK"
 
 [node name="Inventory" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -80,17 +79,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -113.5
-margin_top = -32.5
-margin_right = 113.5
-margin_bottom = 32.5
+margin_left = -181.5
+margin_top = -51.5
+margin_right = 181.5
+margin_bottom = 51.5
 color = Color( 0.152941, 0.152941, 0.152941, 1 )
 script = ExtResource( 4 )
 
 [node name="MessageText" type="Label" parent="DeathMessage"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "YOU DIED
+text = "YOU DIED!
+
+Player seems to have been expunged by %s.
 
 Press \"r\" to restart the game!"
 align = 1
@@ -120,6 +121,5 @@ valign = 1
 uppercase = true
 
 [node name="HUDSound" type="AudioStreamPlayer" parent="."]
-bus = "HUD"
-script = ExtResource( 6 )
+bus = "GUI"
 [connection signal="timeout" from="BlinkMeter/BlinkTime" to="BlinkMeter" method="_on_BlinkTime_timeout"]

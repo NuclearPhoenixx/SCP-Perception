@@ -1,9 +1,14 @@
 extends KinematicBody2D
 
-onready var SoundPlayer = get_node("PlayerSound")
-onready var SoundTimer = SoundPlayer.get_node("Timer")
+onready var MoveSound = get_node("MoveSound")
+onready var SoundTimer = MoveSound.get_node("Timer")
+onready var SoundPlayer = get_node("SoundEffects")
 
 var inv_visible = false
+
+func _ready():
+	get_node("RayCastSCP").connect("danger_spotted", self, "tease_sound")
+	get_node("RayCastSCP").connect("danger_scared", self, "scare_sound")
 
 func move(direction):
 	var speed
@@ -56,7 +61,7 @@ func _physics_process(delta):
 		get_tree().set_input_as_handled()
 		move(Vector2(1,0))
 	
-	if !inv_visible:
+	if !inv_visible: #only move head if not in inventory
 		look_at(get_global_mouse_position()) # rotate head to mouse position
 
 func _unhandled_key_input(event):
@@ -65,10 +70,20 @@ func _unhandled_key_input(event):
 		inv_visible = !inv_visible
 
 func move_sound(stream, delay): #sound handling
-	if !SoundPlayer.is_playing() and SoundTimer.is_stopped():
-		SoundPlayer.stream = stream[round(rand_range(0,7))]
+	if !MoveSound.is_playing() and SoundTimer.is_stopped():
+		MoveSound.stream = stream[round(rand_range(0,7))]
 		SoundTimer.start(delay)
 
 func _on_Timer_timeout():
-	SoundPlayer.play()
+	MoveSound.play()
 	SoundTimer.stop()
+
+func tease_sound(): #this will play when the player spots an enemy
+	if !SoundPlayer.is_playing():
+		SoundPlayer.stream = sound.spot_sounds[round(rand_range(0,2))]
+		SoundPlayer.play()
+
+func scare_sound(): #this will play when the player gets "jump-scared"
+	if !SoundPlayer.is_playing():
+		SoundPlayer.stream = sound.scare_sounds[round(rand_range(0,3))]
+		SoundPlayer.play()

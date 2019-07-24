@@ -3,7 +3,7 @@ extends KinematicBody2D
 onready var Nav = get_tree().get_root().find_node("Navigation", true, false)
 onready var Pathfinding = get_node("DebugPathfinding")
 onready var IdleTimer = get_node("IdleTimer")
-onready var Raycast = get_node("RayCast")
+onready var Raycast = get_node("RayCastTarget")
 onready var cs_radius = get_node("CollisionShape").shape.radius #collision shape radius
 
 export(float) var MOVE_SPEED = 90

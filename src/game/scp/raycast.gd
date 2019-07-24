@@ -3,12 +3,12 @@ extends RayCast2D
 var AreaTarget
 var TargetNode
 
-func _on_TargetArea_body_entered(body):
+func _on_RayCastArea_body_entered(body):
 	if body.is_in_group("player"):
 		AreaTarget = body
 		enabled = true
 
-func _on_TargetArea_body_exited(body):
+func _on_RayCastArea_body_exited(body):
 	if body.is_in_group("player"):
 		TargetNode = null
 		enabled = false

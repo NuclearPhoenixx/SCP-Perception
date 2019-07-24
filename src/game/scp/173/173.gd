@@ -1,12 +1,10 @@
 extends KinematicBody2D
 
-## MOVEMENT STILL PRETTY BUGGY
-
 onready var Nav = get_tree().get_root().find_node("Navigation", true, false)
 onready var Pathfinding = get_node("DebugPathfinding")
 onready var IdleTimer = get_node("IdleTimer")
 onready var AttackCollision = get_node("KillArea/CollisionShape2D")
-onready var Raycast = get_node("RayCast")
+onready var Raycast = get_node("RayCastTarget")
 onready var SoundPlayer = get_node("Sounds")
 onready var cs_radius = get_node("CollisionShape").shape.radius #collision shape radius
 
