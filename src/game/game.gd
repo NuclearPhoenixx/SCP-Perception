@@ -21,9 +21,6 @@ signal loading_ended #signal launched when loading a new map has ended
 var player_data # THIS HOLDS ALL PLAYER DATA
 
 func _ready():
-	#var RNG = RandomNumberGenerator.new() #random number generator, will take care of randomness and seeds
-	#RNG.seed = 173 # NOT WORKING IN _READY, PLACE THIS SOMEWHERE AFTER LOADING OR SOMETHING
-	#RNG.randi_range(0,1)
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	init_player_data()
 

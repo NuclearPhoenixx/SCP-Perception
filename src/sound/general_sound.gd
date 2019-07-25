@@ -11,10 +11,10 @@ func grab_item(): #this sound plays when the player picks up an item
 
 func drop_item():
 	pass
-	#stream = sound.item_drop[round(rand_range(0,))]
+	#stream = sound.item_drop[core.rand_int(0,)]
 	#play()
 
 func player_death(killer_name):
 	var array = sound.death_sounds[killer_name]
-	stream = array[round(rand_range(0,array.size()-1))]
+	stream = array[core.rand_int(0,array.size()-1)]
 	play()

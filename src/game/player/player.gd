@@ -71,7 +71,7 @@ func _unhandled_key_input(event):
 
 func move_sound(stream, delay): #sound handling
 	if !MoveSound.is_playing() and SoundTimer.is_stopped():
-		MoveSound.stream = stream[round(rand_range(0,7))]
+		MoveSound.stream = stream[core.rand_int(0,7)]
 		SoundTimer.start(delay)
 
 func _on_Timer_timeout():
@@ -80,10 +80,10 @@ func _on_Timer_timeout():
 
 func tease_sound(): #this will play when the player spots an enemy
 	if !SoundPlayer.is_playing():
-		SoundPlayer.stream = sound.spot_sounds[round(rand_range(0,2))]
+		SoundPlayer.stream = sound.spot_sounds[core.rand_int(0,2)]
 		SoundPlayer.play()
 
 func scare_sound(): #this will play when the player gets "jump-scared"
 	if !SoundPlayer.is_playing():
-		SoundPlayer.stream = sound.scare_sounds[round(rand_range(0,3))]
+		SoundPlayer.stream = sound.scare_sounds[core.rand_int(0,3)]
 		SoundPlayer.play()

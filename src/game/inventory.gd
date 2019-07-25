@@ -26,8 +26,6 @@ func pickup(item):
 		
 		item.queue_free()
 		emit_signal("item_grabbed")
-		#print("Grab: ", item.name)
-		print(inventory.keys())
 	else:
 		print("Inventory is full!")
 

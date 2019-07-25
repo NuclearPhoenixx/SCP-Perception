@@ -52,7 +52,7 @@ func _physics_process(delta):
 			elif collision.travel.length() <= STUCK_THRES: #this prevents the scp to get indefinitely stuck
 				path.resize(0)
 	elif IdleTimer.is_stopped(): #if no path to go start idle movement
-		IdleTimer.start(rand_range(IDLE_TIME_MIN,IDLE_TIME_MAX))
+		IdleTimer.start(core.rand_int(IDLE_TIME_MIN,IDLE_TIME_MAX))
 	
 	# DEBUG STUFF #
 	if settings.debug_mode: #if in debug mode then show the Pathfinding vectors
@@ -63,7 +63,7 @@ func _physics_process(delta):
 
 func _on_IdleTimer_timeout(): #crude idle movement implementation
 	var idle_target = Vector2()
-	idle_target.x = rand_range(-IDLE_DISTANCE, IDLE_DISTANCE)
-	idle_target.y = rand_range(-IDLE_DISTANCE, IDLE_DISTANCE)
+	idle_target.x = core.rand_int(-IDLE_DISTANCE, IDLE_DISTANCE)
+	idle_target.y = core.rand_int(-IDLE_DISTANCE, IDLE_DISTANCE)
 	speed = IDLE_SPEED
 	create_path(position + idle_target)

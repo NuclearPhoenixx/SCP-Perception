@@ -37,10 +37,10 @@ func door_control():
 	if !Anim.is_playing():
 		if DoorSprite.frame == 0: #closed
 			Anim.play_backwards(door_animation)
-			DoorSound.stream = sound.door_open[round(rand_range(0,2))]
+			DoorSound.stream = sound.door_open[core.rand_int(0,2)]
 		else: #opened
 			Anim.play(door_animation)
-			DoorSound.stream = sound.door_close[round(rand_range(0,2))]
+			DoorSound.stream = sound.door_close[core.rand_int(0,2)]
 			
 		DoorSound.play(.3)
 
