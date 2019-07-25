@@ -3,10 +3,11 @@ extends Node
 #const StandardKeycard = preload("res://scenes/item/keycard/keycard_level1.tscn")
 const MPPlayer = preload("res://scenes/multiplayer/mp_player.tscn") #memory optimization: dont pre-load?
 
-func spawn_item(path, parent, position, rotation=0): #spawn any item
+func spawn_item(path, parent, name, position, rotation=0): #spawn any item
 	var item = spawn_node(path, get_node(parent))
 	item.position = position
 	item.rotation = rotation
+	item.name = name
 	return item
 
 func spawn_mp_player(name, position): #for multiplayer only

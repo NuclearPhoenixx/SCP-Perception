@@ -26,12 +26,14 @@ func pickup(item):
 		
 		item.queue_free()
 		emit_signal("item_grabbed")
+		#print("Grab: ", item.name)
+		print(inventory.keys())
 	else:
 		print("Inventory is full!")
 
 func drop(name):
 	for player in get_tree().get_nodes_in_group("player"): #drop item at every "player" node
-		var item = spawn.spawn_item(inventory[name]["filename"], inventory[name]["path"], player.position, player.rotation - PI/2)
+		var item = spawn.spawn_item(inventory[name]["filename"], inventory[name]["path"], name, player.position, player.rotation - PI/2)
 		item.item_name = inventory[name]["item_name"]##
 		item.description = inventory[name]["item_description"]##
 		inventory.erase(name)
