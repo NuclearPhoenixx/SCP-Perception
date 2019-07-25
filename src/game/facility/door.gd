@@ -1,11 +1,15 @@
 extends StaticBody2D
 
+export(NodePath) var gate_partner_path = ""
+export(bool) var gate_open = false
+export(int, 10) var door_clearance = 0 #no clearance needed, keycard needed for >0
+
 onready var DoorSprite = get_node("DoorModel")
 onready var Anim = DoorSprite.get_node("DoorAnimation")
 onready var DoorSound = get_node("DoorSound")
 onready var KeySound = get_node("KeycardSound")
+onready var gate_partner = get_node(gate_partner_path)
 
-export(int, 10) var door_clearance = 0 #no clearance needed, keycard needed for >0
 var door_animation = "door_anim" #the right door_anim for this door
 
 func _ready():
@@ -15,10 +19,12 @@ func _ready():
 	get_node("CollisionShape").shape = get_node("CollisionShape").shape.duplicate()
 	get_node("CollisionShape2").shape = get_node("CollisionShape2").shape.duplicate()
 	
-	#initiate the right door sprites
-	if door_clearance > 0:
+	if door_clearance > 0: #initiate the right door sprites
 		door_animation = "secure_door_anim"
-		Anim.current_animation = door_animation
+		Anim.play(door_animation, -1, 10)
+	
+	if gate_open: #open door with animation
+		Anim.play_backwards(door_animation)
 
 func check_clearance(): #query clearance level from inventory
 	if door_clearance == 0: #check if door is open for everyone
@@ -45,6 +51,9 @@ func door_control():
 			DoorSound.stream = sound.door_close[core.rand_int(0,2)]
 			
 		DoorSound.play(.3)
+		
+		if gate_partner != null: #this controls the interlocking security gate function
+				gate_partner.door_control()
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("interact"):
