@@ -17,19 +17,19 @@ tracks/0/keys = {
 "values": [ 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../CollisionShape:disabled")
+tracks/1/path = NodePath("../LightOccluderLeft:occluder:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.56 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ PoolVector2Array( -16, -4, -16, 4, -12, 4, -12, -4 ), PoolVector2Array( -16, -4, -16, 4, -11, 4, -11, -4 ), PoolVector2Array( -16, -4, -16, 4, -10, 4, -10, -4 ), PoolVector2Array( -16, -4, -16, 4, -9, 4, -9, -4 ), PoolVector2Array( -16, -4, -16, 4, -8, 4, -8, -4 ), PoolVector2Array( -16, -4, -16, 4, -7, 4, -7, -4 ), PoolVector2Array( -16, -4, -16, 4, -6, 4, -6, -4 ), PoolVector2Array( -16, -4, -16, 4, -5, 4, -5, -4 ), PoolVector2Array( -16, -4, -16, 4, -4, 4, -4, -4 ), PoolVector2Array( -16, -4, -16, 4, -3, 4, -3, -4 ), PoolVector2Array( -16, -4, -16, 4, -2, 4, -2, -4 ), PoolVector2Array( -16, -4, -16, 4, -1, 4, -1, -4 ), PoolVector2Array( -16, -4, -16, 4, 0, 4, 0, -4 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../LightOccluderLeft:occluder:polygon")
+tracks/2/path = NodePath("../LightOccluderRight:occluder:polygon")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -38,22 +38,22 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ PoolVector2Array( -16, -4, -16, 4, -12, 4, -12, -4 ), PoolVector2Array( -16, -4, -16, 4, -11, 4, -11, -4 ), PoolVector2Array( -16, -4, -16, 4, -10, 4, -10, -4 ), PoolVector2Array( -16, -4, -16, 4, -9, 4, -9, -4 ), PoolVector2Array( -16, -4, -16, 4, -8, 4, -8, -4 ), PoolVector2Array( -16, -4, -16, 4, -7, 4, -7, -4 ), PoolVector2Array( -16, -4, -16, 4, -6, 4, -6, -4 ), PoolVector2Array( -16, -4, -16, 4, -5, 4, -5, -4 ), PoolVector2Array( -16, -4, -16, 4, -4, 4, -4, -4 ), PoolVector2Array( -16, -4, -16, 4, -3, 4, -3, -4 ), PoolVector2Array( -16, -4, -16, 4, -2, 4, -2, -4 ), PoolVector2Array( -16, -4, -16, 4, -1, 4, -1, -4 ), PoolVector2Array( -16, -4, -16, 4, 0, 4, 0, -4 ) ]
+"values": [ PoolVector2Array( 12, -4, 16, -4, 16, 4, 12, 4 ), PoolVector2Array( 11, -4, 16, -4, 16, 4, 11, 4 ), PoolVector2Array( 10, -4, 16, -4, 16, 4, 10, 4 ), PoolVector2Array( 9, -4, 16, -4, 16, 4, 9, 4 ), PoolVector2Array( 8, -4, 16, -4, 16, 4, 8, 4 ), PoolVector2Array( 7, -4, 16, -4, 16, 4, 7, 4 ), PoolVector2Array( 6, -4, 16, -4, 16, 4, 6, 4 ), PoolVector2Array( 5, -4, 16, -4, 16, 4, 5, 4 ), PoolVector2Array( 4, -4, 16, -4, 16, 4, 4, 4 ), PoolVector2Array( 3, -4, 16, -4, 16, 4, 3, 4 ), PoolVector2Array( 2, -4, 16, -4, 16, 4, 2, 4 ), PoolVector2Array( 1, -4, 16, -4, 16, 4, 1, 4 ), PoolVector2Array( 0, -4, 16, -4, 16, 4, 0, 4 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../LightOccluderRight:occluder:polygon")
+tracks/3/path = NodePath("../DoorStatus:color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ PoolVector2Array( 12, -4, 16, -4, 16, 4, 12, 4 ), PoolVector2Array( 11, -4, 16, -4, 16, 4, 11, 4 ), PoolVector2Array( 10, -4, 16, -4, 16, 4, 10, 4 ), PoolVector2Array( 9, -4, 16, -4, 16, 4, 9, 4 ), PoolVector2Array( 8, -4, 16, -4, 16, 4, 8, 4 ), PoolVector2Array( 7, -4, 16, -4, 16, 4, 7, 4 ), PoolVector2Array( 6, -4, 16, -4, 16, 4, 6, 4 ), PoolVector2Array( 5, -4, 16, -4, 16, 4, 5, 4 ), PoolVector2Array( 4, -4, 16, -4, 16, 4, 4, 4 ), PoolVector2Array( 3, -4, 16, -4, 16, 4, 3, 4 ), PoolVector2Array( 2, -4, 16, -4, 16, 4, 2, 4 ), PoolVector2Array( 1, -4, 16, -4, 16, 4, 1, 4 ), PoolVector2Array( 0, -4, 16, -4, 16, 4, 0, 4 ) ]
+"times": PoolRealArray( 0, 0.02, 1.01, 1.03 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0431373, 0.784314, 0, 1 ), Color( 0.901961, 0.231373, 0, 1 ), Color( 0.901961, 0.231373, 0, 1 ), Color( 0.0431373, 0.784314, 0, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../DoorStatus:color")
+tracks/4/path = NodePath("../DoorStatus2:color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -65,14 +65,50 @@ tracks/4/keys = {
 "values": [ Color( 0.0431373, 0.784314, 0, 1 ), Color( 0.901961, 0.231373, 0, 1 ), Color( 0.901961, 0.231373, 0, 1 ), Color( 0.0431373, 0.784314, 0, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../DoorStatus2:color")
+tracks/5/path = NodePath("../CollisionShape:shape:extents")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.02, 1.01, 1.03 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.0431373, 0.784314, 0, 1 ), Color( 0.901961, 0.231373, 0, 1 ), Color( 0.901961, 0.231373, 0, 1 ), Color( 0.0431373, 0.784314, 0, 1 ) ]
+"values": [ Vector2( 2, 4 ), Vector2( 3, 4 ), Vector2( 3, 4 ), Vector2( 4, 4 ), Vector2( 4, 4 ), Vector2( 5, 4 ), Vector2( 5, 4 ), Vector2( 6, 4 ), Vector2( 6, 4 ), Vector2( 7, 4 ), Vector2( 7, 4 ), Vector2( 8, 4 ), Vector2( 8, 4 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../CollisionShape:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -14, 0 ), Vector2( -14, 0 ), Vector2( -13, 0 ), Vector2( -13, 0 ), Vector2( -12, 0 ), Vector2( -12, 0 ), Vector2( -11, 0 ), Vector2( -11, 0 ), Vector2( -10, 0 ), Vector2( -10, 0 ), Vector2( -9, 0 ), Vector2( -9, 0 ), Vector2( -8, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../CollisionShape2:shape:extents")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 4 ), Vector2( 3, 4 ), Vector2( 3, 4 ), Vector2( 4, 4 ), Vector2( 4, 4 ), Vector2( 5, 4 ), Vector2( 5, 4 ), Vector2( 6, 4 ), Vector2( 6, 4 ), Vector2( 7, 4 ), Vector2( 7, 4 ), Vector2( 8, 4 ), Vector2( 8, 4 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../CollisionShape2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14, 0 ), Vector2( 14, 0 ), Vector2( 13, 0 ), Vector2( 13, 0 ), Vector2( 12, 0 ), Vector2( 12, 0 ), Vector2( 11, 0 ), Vector2( 11, 0 ), Vector2( 10, 0 ), Vector2( 10, 0 ), Vector2( 9, 0 ), Vector2( 9, 0 ), Vector2( 8, 0 ) ]
 }

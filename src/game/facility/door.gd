@@ -12,6 +12,8 @@ func _ready():
 	set_process_unhandled_key_input(false)
 	get_node("LightOccluderLeft").occluder = get_node("LightOccluderLeft").occluder.duplicate() #make unique
 	get_node("LightOccluderRight").occluder = get_node("LightOccluderRight").occluder.duplicate()
+	get_node("CollisionShape").shape = get_node("CollisionShape").shape.duplicate()
+	get_node("CollisionShape2").shape = get_node("CollisionShape2").shape.duplicate()
 	
 	#initiate the right door sprites
 	if door_clearance > 0:
