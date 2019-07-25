@@ -7,6 +7,8 @@ const SPRINT_DELAY = 0
 # PLAYER
 var walk = []
 var sprint = []
+var walk_metal = []
+var sprint_metal = []
 var keycard_use = []
 var item_pickup = []
 var item_drop = []
@@ -24,7 +26,9 @@ var the_sculpture = []
 
 func _ready():
 	walk = load_stream("step/walk/step")
+	walk_metal = load_stream("step/walk/step_metal")
 	sprint = load_stream("step/sprint/sprint")
+	sprint_metal = load_stream("step/sprint/sprint_metal")
 	keycard_use = load_stream("interact/keycard_use", 2)
 	door_open = load_stream("facility/door/door_open", 3)
 	door_close = load_stream("facility/door/door_close", 3)
