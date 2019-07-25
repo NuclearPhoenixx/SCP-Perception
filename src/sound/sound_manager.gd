@@ -9,7 +9,7 @@ var walk = []
 var sprint = []
 var keycard_use = []
 var item_pickup = []
-var item_drop = [] #########
+var item_drop = []
 # ENEMY SPOTTED SOUND
 var spot_sounds = []
 var scare_sounds = []
@@ -33,6 +33,7 @@ func _ready():
 	item_pickup = load_stream("interact/pick_item", 1)
 	scare_sounds = load_stream("horror/near_death/horror", 4)
 	spot_sounds = load_stream("horror/spot/horror", 3)
+	item_drop = load_stream("interact/drop_item", 1)
 	
 	load_death_sounds()
 
