@@ -7,19 +7,19 @@
 [ext_resource path="res://sounds/interact/keycard_use2.ogg" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 7.625, 4 )
+extents = Vector2( 8, 4 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 7.625, 4 )
+extents = Vector2( 8, 4 )
 
 [sub_resource type="StreamTexture" id=3]
 load_path = "res://.import/door.png-6da74c9bd08664498f84a7da8efa363c.stex"
 
 [sub_resource type="OccluderPolygon2D" id=4]
-polygon = PoolVector2Array( -16, -4, -16, 4, -2, 4, -2, -4 )
+polygon = PoolVector2Array( -16, -4, -16, 4, 0, 4, 0, -4 )
 
 [sub_resource type="OccluderPolygon2D" id=5]
-polygon = PoolVector2Array( 2, -4, 16, -4, 16, 4, 2, 4 )
+polygon = PoolVector2Array( 0, -4, 16, -4, 16, 4, 0, 4 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 16, 15 )
@@ -34,27 +34,26 @@ margin_left = 12.0
 margin_top = 4.0
 margin_right = 16.0
 margin_bottom = 8.0
-color = Color( 0.901961, 0.231373, 0, 1 )
+color = Color( 0.0431373, 0.784314, 0, 1 )
 
 [node name="DoorStatus2" type="ColorRect" parent="."]
 margin_left = -16.0
 margin_top = -8.0
 margin_right = -12.0
 margin_bottom = -4.0
-color = Color( 0.901961, 0.231373, 0, 1 )
+color = Color( 0.0431373, 0.784314, 0, 1 )
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2( -9, 0 )
+position = Vector2( -8, 0 )
 shape = SubResource( 7 )
 
 [node name="CollisionShape2" type="CollisionShape2D" parent="."]
-position = Vector2( 9, 0 )
+position = Vector2( 8, 0 )
 shape = SubResource( 8 )
 
 [node name="DoorModel" type="Sprite" parent="."]
 texture = SubResource( 3 )
 hframes = 13
-frame = 2
 __meta__ = {
 "_edit_lock_": true
 }

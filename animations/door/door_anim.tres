@@ -112,3 +112,27 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Vector2( 14, 0 ), Vector2( 14, 0 ), Vector2( 13, 0 ), Vector2( 13, 0 ), Vector2( 12, 0 ), Vector2( 12, 0 ), Vector2( 11, 0 ), Vector2( 11, 0 ), Vector2( 10, 0 ), Vector2( 10, 0 ), Vector2( 9, 0 ), Vector2( 9, 0 ), Vector2( 8, 0 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("../CollisionShape:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.08 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../CollisionShape2:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.08 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
