@@ -1,4 +1,4 @@
-extends ProgressBar
+extends TextureProgress
 
 func _ready():
 	max_value = game.STAMINA #load and set all the player values

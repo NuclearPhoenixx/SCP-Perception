@@ -1,4 +1,4 @@
-extends ProgressBar
+extends TextureProgress
 
 onready var BlinkTimer = get_node("BlinkTime")
 

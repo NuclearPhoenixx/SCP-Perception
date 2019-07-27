@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://fonts/connection_ii/ConnectionII.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/game/hud/stamina.gd" type="Script" id=2]
@@ -7,14 +7,38 @@
 [ext_resource path="res://src/game/hud/death_message.gd" type="Script" id=5]
 [ext_resource path="res://src/game/hud/loading_message.gd" type="Script" id=6]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=1]
-size = 15
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.356863, 0.356863, 0.356863, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.14902, 0.14902, 0.14902, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 14
+extra_spacing_char = 1
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 14
+extra_spacing_char = 1
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 15
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 18
 font_data = ExtResource( 1 )
 
@@ -27,60 +51,61 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -311.0
 margin_top = -18.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Press \"N\" to toggle debugging mode."
 
-[node name="Stamina" type="ProgressBar" parent="."]
-editor/display_folded = true
-margin_left = 10.0
+[node name="Stamina" type="TextureProgress" parent="."]
+margin_left = 30.0
 margin_top = 560.0
-margin_right = 190.0
-margin_bottom = 585.0
-max_value = 150.0
+margin_right = 210.0
+margin_bottom = 580.0
 step = 0.1
-value = 150.0
-rounded = true
-percent_visible = false
+value = 50.0
+texture_under = SubResource( 5 )
+texture_progress = SubResource( 9 )
+nine_patch_stretch = true
 script = ExtResource( 2 )
 
-[node name="Hint" type="Label" parent="Stamina"]
+[node name="Label" type="Label" parent="Stamina"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -29.5
-margin_top = -7.0
-margin_right = 29.5
-margin_bottom = 7.0
-text = "STAMINA"
+margin_left = -30.0
+margin_top = -8.5
+margin_right = 30.0
+margin_bottom = 8.5
+custom_fonts/font = SubResource( 11 )
+text = "stamina"
+uppercase = true
 
-[node name="BlinkMeter" type="ProgressBar" parent="."]
-editor/display_folded = true
-margin_left = 10.0
+[node name="BlinkMeter" type="TextureProgress" parent="."]
+margin_left = 30.0
 margin_top = 520.0
-margin_right = 190.0
-margin_bottom = 545.0
+margin_right = 210.0
+margin_bottom = 540.0
 step = 0.1
-value = 100.0
-percent_visible = false
+value = 50.0
+texture_under = SubResource( 5 )
+texture_progress = SubResource( 9 )
+nine_patch_stretch = true
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
+
+[node name="Label" type="Label" parent="BlinkMeter"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -19.0
+margin_top = -8.5
+margin_right = 19.0
+margin_bottom = 8.5
+custom_fonts/font = SubResource( 10 )
+text = "blink"
+uppercase = true
 
 [node name="BlinkTime" type="Timer" parent="BlinkMeter"]
 one_shot = true
-
-[node name="Hint" type="Label" parent="BlinkMeter"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -19.5
-margin_top = -7.0
-margin_right = 19.5
-margin_bottom = 7.0
-text = "BLINK"
 
 [node name="Inventory" parent="." instance=ExtResource( 4 )]
 visible = false
@@ -102,7 +127,7 @@ script = ExtResource( 5 )
 [node name="MessageText" type="Label" parent="DeathMessage"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "YOU DIED!
 
 Player seems to have been expunged by %s.
@@ -129,7 +154,7 @@ script = ExtResource( 6 )
 [node name="Label" type="Label" parent="LoadingMessage"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "loading..."
 align = 1
 valign = 1

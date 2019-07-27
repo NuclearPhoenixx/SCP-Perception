@@ -212,7 +212,7 @@ color = Color( 0.439216, 0.345098, 0.345098, 1 )
 position = Vector2( 414.035, 33.1618 )
 
 [node name="SCP-017" parent="." instance=ExtResource( 12 )]
-position = Vector2( 202.958, 774.639 )
+position = Vector2( 208, 773 )
 
 [node name="SCP-173" parent="." instance=ExtResource( 13 )]
 position = Vector2( 1120.41, 676.145 )
