@@ -1,6 +1,17 @@
 extends "res://src/game/item/item_pickup.gd"
 
 export(String, MULTILINE) var item_name = "Level 2 Keycard"
-export(String, MULTILINE) var description = "A Level 2 security keycard. Can be used to open security doors."
+export(String, MULTILINE) var item_description = "A Level 2 security keycard. Can be used to open security doors."
 export(bool) var has_clearance = true
-export(int, 10) var clearance = 2
+export(int, 10) var item_clearance = 2
+
+func save():
+	var dict = {
+				"item_dict": {
+							"item_name": item_name,
+							"item_description": item_description,
+							"has_clearance": has_clearance,
+							"item_clearance": item_clearance
+							}
+				}
+	return dict

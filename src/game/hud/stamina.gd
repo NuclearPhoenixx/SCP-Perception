@@ -1,12 +1,14 @@
 extends TextureProgress
 
+
 func _ready():
 	max_value = game.STAMINA #load and set all the player values
 	value = game.player_data["stamina"]
-	game.connect("loading_started", self, "save_data")
+	#game.connect("loading_started", self, "save_data")
+	#game.connect("saving_started", self, "save_data")
 
-func save_data():
-	game.player_data["stamina"] = value
+#func save_data():
+#	game.player_data["stamina"] = value
 
 func _physics_process(delta):
 	if value == 0: #if stamina is 0 then the player is exhausted and stops sprinting

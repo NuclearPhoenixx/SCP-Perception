@@ -21,7 +21,7 @@ func _ready():
 	
 	if door_clearance > 0: #initiate the right door sprites
 		door_animation = "secure_door_anim"
-		Anim.play(door_animation, -1, 10)
+		Anim.play(door_animation)
 	
 	if gate_open: #open door with animation
 		Anim.play_backwards(door_animation)
@@ -73,3 +73,13 @@ func _on_InteractionArea_body_entered(body):
 func _on_InteractionArea_body_exited(body):
 	if body.is_in_group("player"):
 		set_process_unhandled_key_input(false)
+
+"""
+func save():
+	var save_dict = {
+					"gate_partner_path": gate_partner_path,
+					#"gate_open": gate_open,
+					"door_clearance": door_clearance
+					}
+	return save_dict
+"""

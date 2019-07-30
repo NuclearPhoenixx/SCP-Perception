@@ -1,38 +1,49 @@
 extends Node
 
-var inventory = {} #PLAYER INVENTORY
+var inventory = {} setget setget_inv #PLAYER INVENTORY
 
 signal item_dropped #optional: just update the inventory change instead of everything?
 signal item_grabbed #in regard of performance pretty unimportant though
+signal reload_inv #just reload the whole inventory with its contents. Used for loading save games
 
 # ITEM STATS THAT <NEED> TO BE DEFINED FOR THIS TO WORK:
-# -> bool has_clearance
-# -> String item_name
-# -> string item_description
+# -> bool has_clearance; this will set if one can use the item as sort of key(card)
+# -> String item_name; shows in the inventory and info text
+# -> string item_description; shows in inventory
+# -> func save(); all the above and more will be saved into the according dictionary
 
 func pickup(item):
 	if inventory.size() < game.INVENTORY_SIZE:
-		var clearance = -1
-		if item.has_clearance:
-			clearance = item.clearance
-			
-		inventory[item.name] = {} #save item name with path and other info
-		inventory[item.name]["item_name"] = item.item_name
-		inventory[item.name]["item_description"] = item.description
-		inventory[item.name]["item_clearance"] = clearance
-		inventory[item.name]["filename"] = item.filename
-		inventory[item.name]["path"] = item.get_parent().get_path()
-		inventory[item.name]["texture"] = item.texture.resource_path
+		inventory[item.name] = {}
+		var dict = inventory[item.name]
+		
+		dict["filename"] = item.filename #save item name with path and other info
+		dict["path"] = item.get_parent().get_path()
+		dict["texture"] = item.texture.resource_path
+		
+		var item_dict = item.save()["item_dict"]
+		for data in item_dict:
+			dict[data] = item_dict[data]
+		
+		if !item.has_clearance: #fix clearance
+			dict["item_clearance"] = -1
 		
 		item.queue_free()
 		emit_signal("item_grabbed")
 	else:
 		print("Inventory is full!")
+		#print user-readable hint
 
 func drop(name):
 	for player in get_tree().get_nodes_in_group("player"): #drop item at every "player" node
 		var item = spawn.spawn_item(inventory[name]["filename"], inventory[name]["path"], name, player.position, player.rotation - PI/2)
-		item.item_name = inventory[name]["item_name"]##
-		item.description = inventory[name]["item_description"]##
+		
+		for value in inventory[item.name].keys(): #restore all of the original data
+			item.set(value, inventory[item.name][value])
+			
 		inventory.erase(name)
 		emit_signal("item_dropped")
+
+func setget_inv(new_inv):
+	inventory = new_inv
+	emit_signal("reload_inv")

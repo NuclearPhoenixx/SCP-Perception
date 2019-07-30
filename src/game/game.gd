@@ -17,6 +17,7 @@ const BLINK = 100 #maximum player blink level
 signal player_died #signal launched when player dies
 signal loading_started #signal launched when loading a new map has started
 signal loading_ended #signal launched when loading a new map has ended
+#signal saving_started #emitted when saving data has started
 
 var player_data # THIS HOLDS ALL PLAYER DATA
 
@@ -25,7 +26,8 @@ func _ready():
 	init_player_data()
 
 func init_player_data(): #STANDARD VALUES FOR PLAYER DATA
-	player_data = {"exhausted": false,
+	player_data = {
+					"exhausted": false,
 					"stamina": STAMINA,
 					"blinking": false,
 					"blink": BLINK
@@ -33,19 +35,17 @@ func init_player_data(): #STANDARD VALUES FOR PLAYER DATA
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("ui_cancel"): #quit game
-		#var packed_scene = PackedScene.new()
-		#packed_scene.pack(get_tree().get_current_scene())
-		#ResourceSaver.save("res://the_scene.tscn", packed_scene)
-		# This saves the whole scene in the correct format. Saves all nodes, call set_owner() prior
+		#save_game("user://game.save")
 		get_tree().quit()
 	
 	if event.is_action_pressed("reset"): #reset scene
 		get_tree().set_input_as_handled()
 		get_tree().paused = false
 		
-		#load_map(get_tree().get_root().get_node("Main/World").filename)
+		#load_game("user://game.save")
 		reset_map()
 
+"""
 func load_map(map_path): #this will load a new map, leaving all player stats and hud untouched
 	emit_signal("loading_started")
 	get_node("/root/Main/World").free() #free old map completely
@@ -54,8 +54,78 @@ func load_map(map_path): #this will load a new map, leaving all player stats and
 	get_node("/root/Main").add_child(NewMap)
 	emit_signal("loading_ended")
 	# PAUSE ALL NODES AND UN-PAUSE SO THAT PLAYER IS E.G. NOT ABLE TO BLINK IN LOADING SCREENS
+"""
 
 func reset_map(): #this will reload the current map, resetting all player stats and hud
 	get_tree().reload_current_scene()
 	init_player_data()
 	inventory.inventory.clear()
+
+"""
+func save_game(path):
+	emit_signal("saving_started") #let hud know that we want to save data
+	
+	var save_game = File.new()
+	save_game.open(path, File.WRITE)
+	
+	save_game.store_line(to_json({"inventory": inventory.inventory})) #save global data
+	save_game.store_line(to_json({"player_data": player_data}))
+	save_game.store_line(to_json({"map": get_tree().get_root().get_node("Main/World").filename}))
+	
+	for node in get_tree().get_nodes_in_group("Save"): #save node specific data
+		var data
+		if node.has_method("save"):
+			data = node.save()
+		else:
+			data = {}
+		data["name"] = node.name
+		data["filename"] = node.filename
+		data["parent"] = node.get_parent().get_path()
+		data["pos_x"] = node.position.x
+		data["pos_y"] = node.position.y
+		data["rotation"] = node.rotation
+		data["scale_x"] = node.scale.x
+		data["scale_y"] = node.scale.y
+		
+		save_game.store_line(to_json(data))
+	
+	save_game.close()
+
+func load_game(path):
+	var save_game = File.new()
+	save_game.open(path, File.READ)
+	while !save_game.eof_reached():
+		var line = parse_json(save_game.get_line())
+		
+		if typeof(line) != TYPE_DICTIONARY:
+			continue
+		
+		if line.has("map"):
+			var root = get_tree().get_root()
+			root.get_node("Main/World").free()
+			
+			var new_map = load(line["map"]).instance()
+			root.get_node("Main").add_child_below_node(root.get_node("Main/CanvasMod"), new_map)
+			
+			for node in get_tree().get_nodes_in_group("Save"):
+				node.queue_free()
+		
+		elif line.has("inventory"):
+			inventory.inventory = line["inventory"]
+		elif line.has("player_data"):
+			player_data = line["player_data"]
+		else:
+			var node = load(line["filename"]).instance()
+			get_node(line["parent"]).add_child(node)
+			node.position = Vector2(line["pos_x"], line["pos_y"])
+			node.scale = Vector2(line["scale_x"], line["scale_y"])
+			
+			print(line["name"])
+			
+			for i in line.keys():
+				if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y" or i == "scale_x" or i == "scale_y":
+					continue
+				node.set(i, line[i])
+	
+	save_game.close()
+"""

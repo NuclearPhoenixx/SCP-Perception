@@ -14,6 +14,7 @@ func _ready():
 	set_process(false)
 	inventory.connect("item_grabbed", self, "update_inv")
 	inventory.connect("item_dropped", self, "update_inv")
+	inventory.connect("reload_inv", self, "update_inv")
 	color = inv_normal_color
 
 func update_inv():

@@ -83,3 +83,16 @@ func _on_IdleTimer_timeout(): #crude idle movement implementation
 	idle_target.y = core.rand_int(-IDLE_DISTANCE, IDLE_DISTANCE)
 	#speed = IDLE_SPEED
 	create_path(position + idle_target)
+
+"""
+func save():
+	var save_dict = {
+					"MOVE_SPEED": MOVE_SPEED,
+					"STUCK_THRES": STUCK_THRES,
+					"IDLE_DISTANCE": IDLE_DISTANCE,
+					"IDLE_TIME_MIN": IDLE_TIME_MIN,
+					"IDLE_TIME_MAX": IDLE_TIME_MAX,
+					#"path": path
+					}
+	return save_dict
+"""
