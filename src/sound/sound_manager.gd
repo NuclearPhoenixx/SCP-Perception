@@ -15,6 +15,8 @@ var item_drop = []
 # ENEMY SPOTTED SOUND
 var spot_sounds = []
 var scare_sounds = []
+# ENEMY HUNT SOUNDS
+var hunt_sounds = []
 # DOORS
 var door_open = []
 var door_close = []
@@ -41,13 +43,13 @@ func _ready():
 	
 	load_death_sounds()
 
-func load_stream(dir, m = 8): # !! WARNING: Path not working in export !!
+func load_stream(dir, m = 8): # Search for correct sound files
 	var file = File.new()
 	var array = []
 	
 	for i in range(1,m+1):
 		var path = "res://sounds/" + dir + str(i) + ".ogg"
-		if file.file_exists(path):
+		if file.file_exists(path + ".import"): #searching for *.import files fixes export paths
 			array.append(load(path))
 	
 	return array
