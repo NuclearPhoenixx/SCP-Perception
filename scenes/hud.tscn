@@ -1,44 +1,45 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://fonts/connection_ii/ConnectionII.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://src/game/hud/stamina.gd" type="Script" id=2]
-[ext_resource path="res://src/game/effect/blink.gd" type="Script" id=3]
-[ext_resource path="res://scenes/inventory.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/game/hud/death_message.gd" type="Script" id=5]
-[ext_resource path="res://src/game/hud/loading_message.gd" type="Script" id=6]
+[ext_resource path="res://src/game/hud/fps_label.gd" type="Script" id=2]
+[ext_resource path="res://src/game/hud/stamina.gd" type="Script" id=3]
+[ext_resource path="res://src/game/effect/blink.gd" type="Script" id=4]
+[ext_resource path="res://scenes/inventory.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/game/hud/death_message.gd" type="Script" id=6]
+[ext_resource path="res://src/game/hud/loading_message.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=10]
 offsets = PoolRealArray( 0 )
 colors = PoolColorArray( 0.356863, 0.356863, 0.356863, 1 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.14902, 0.14902, 0.14902, 1 )
 
 [sub_resource type="GradientTexture" id=5]
 gradient = SubResource( 4 )
 
-[sub_resource type="Gradient" id=8]
-offsets = PoolRealArray( 0 )
-colors = PoolColorArray( 0.14902, 0.14902, 0.14902, 1 )
-
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
-
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=6]
 size = 14
 extra_spacing_char = 1
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=7]
 size = 14
 extra_spacing_char = 1
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=8]
 size = 15
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=9]
 size = 18
 font_data = ExtResource( 1 )
 
@@ -54,17 +55,27 @@ margin_top = -18.0
 custom_fonts/font = SubResource( 1 )
 text = "Press \"N\" to toggle debugging mode."
 
+[node name="FPSLabel" type="Label" parent="."]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 21.0
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="FPSLabel"]
+autostart = true
+
 [node name="Stamina" type="TextureProgress" parent="."]
+editor/display_folded = true
 margin_left = 30.0
 margin_top = 560.0
 margin_right = 210.0
 margin_bottom = 580.0
 step = 0.1
 value = 50.0
-texture_under = SubResource( 5 )
-texture_progress = SubResource( 9 )
+texture_under = SubResource( 11 )
+texture_progress = SubResource( 5 )
 nine_patch_stretch = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="Stamina"]
 anchor_left = 0.5
@@ -75,21 +86,22 @@ margin_left = -30.0
 margin_top = -8.5
 margin_right = 30.0
 margin_bottom = 8.5
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 6 )
 text = "stamina"
 uppercase = true
 
 [node name="BlinkMeter" type="TextureProgress" parent="."]
+editor/display_folded = true
 margin_left = 30.0
 margin_top = 520.0
 margin_right = 210.0
 margin_bottom = 540.0
 step = 0.1
 value = 50.0
-texture_under = SubResource( 5 )
-texture_progress = SubResource( 9 )
+texture_under = SubResource( 11 )
+texture_progress = SubResource( 5 )
 nine_patch_stretch = true
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="BlinkMeter"]
 anchor_left = 0.5
@@ -100,14 +112,14 @@ margin_left = -19.0
 margin_top = -8.5
 margin_right = 19.0
 margin_bottom = 8.5
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 7 )
 text = "blink"
 uppercase = true
 
 [node name="BlinkTime" type="Timer" parent="BlinkMeter"]
 one_shot = true
 
-[node name="Inventory" parent="." instance=ExtResource( 4 )]
+[node name="Inventory" parent="." instance=ExtResource( 5 )]
 visible = false
 
 [node name="DeathMessage" type="ColorRect" parent="."]
@@ -122,12 +134,12 @@ margin_top = -80.0
 margin_right = 228.0
 margin_bottom = 52.0
 color = Color( 0.152941, 0.152941, 0.152941, 1 )
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="MessageText" type="Label" parent="DeathMessage"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 8 )
 text = "YOU DIED!
 
 Player seems to have been expunged by %s.
@@ -149,12 +161,12 @@ margin_top = -25.0
 margin_right = 58.5
 margin_bottom = 25.0
 color = Color( 0.152941, 0.152941, 0.152941, 1 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="LoadingMessage"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 9 )
 text = "loading..."
 align = 1
 valign = 1
@@ -162,4 +174,5 @@ uppercase = true
 
 [node name="HUDSound" type="AudioStreamPlayer" parent="."]
 bus = "GUI"
+[connection signal="timeout" from="FPSLabel/Timer" to="FPSLabel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="BlinkMeter/BlinkTime" to="BlinkMeter" method="_on_BlinkTime_timeout"]

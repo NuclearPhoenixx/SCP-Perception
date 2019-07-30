@@ -53,6 +53,7 @@ func load_map(map_path): #this will load a new map, leaving all player stats and
 	var NewMap = load(map_path).instance() #load and instance new map
 	get_node("/root/Main").add_child(NewMap)
 	emit_signal("loading_ended")
+	# PAUSE ALL NODES AND UN-PAUSE SO THAT PLAYER IS E.G. NOT ABLE TO BLINK IN LOADING SCREENS
 
 func reset_map(): #this will reload the current map, resetting all player stats and hud
 	get_tree().reload_current_scene()
