@@ -73,6 +73,7 @@ shape = SubResource( 3 )
 
 [node name="MoveSound" type="AudioStreamPlayer" parent="."]
 editor/display_folded = true
+volume_db = -10.0
 bus = "Sound"
 
 [node name="Timer" type="Timer" parent="MoveSound"]
