@@ -143,6 +143,9 @@ func load_game(path):
 			for i in line.keys():
 				if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y" or i == "scale_x" or i == "scale_y":
 					continue
+				if i == "path": #parse the PoolVector2Array for the SCP paths
+					node.set(i, str2var(line[i]))
+					continue
 				node.set(i, line[i])
 	
 	save_game.close()

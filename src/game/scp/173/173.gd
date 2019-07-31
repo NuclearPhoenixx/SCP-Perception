@@ -91,6 +91,6 @@ func save():
 					"IDLE_DISTANCE": IDLE_DISTANCE,
 					"IDLE_TIME_MIN": IDLE_TIME_MIN,
 					"IDLE_TIME_MAX": IDLE_TIME_MAX,
-					#"path": path
+					"path": var2str(path)
 					}
 	return save_dict

@@ -77,6 +77,6 @@ func save():
 					"IDLE_TIME_MIN": IDLE_TIME_MIN,
 					"IDLE_TIME_MAX": IDLE_TIME_MAX,
 					"speed": speed,
-					#"path": path
+					"path": var2str(path)
 					}
 	return save_dict
