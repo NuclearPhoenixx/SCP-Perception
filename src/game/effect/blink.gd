@@ -23,7 +23,7 @@ func _ready():
 func save_data():
 	game.player_data["blink"] = value
 
-func update_data(max_v = game.STAMINA, cur_v = game.player_data["stamina"]):
+func update_data(max_v = game.BLINK, cur_v = game.player_data["blink"]):
 	max_value = max_v
 	value = cur_v
 

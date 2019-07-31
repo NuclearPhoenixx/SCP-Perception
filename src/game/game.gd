@@ -18,6 +18,7 @@ signal player_died #signal launched when player dies
 signal loading_started #signal launched when loading a new map has started
 signal loading_finished #signal launched when loading a new map has ended
 signal saving_started #emitted when saving data has started
+signal saving_finished #saving the current level has finished
 
 var player_data # THIS HOLDS ALL PLAYER DATA
 
@@ -39,15 +40,21 @@ func _unhandled_key_input(event):
 	
 	if event.is_action_pressed("reset"): #reset scene
 		get_tree().set_input_as_handled()
-		get_tree().paused = false
-		
 		reset_map()
 		
 	if event.is_action_pressed("quick_save"):
+		get_tree().set_input_as_handled()
 		save_game("user://quicksave.save")
 	
 	if event.is_action_pressed("quick_load"):
+		get_tree().set_input_as_handled()
 		load_game("user://quicksave.save")
+
+func reset_map(): #this will reload the current map, resetting all player stats and hud
+	get_tree().reload_current_scene()
+	init_player_data()
+	inventory.inventory.clear()
+	get_tree().paused = false #un-pause if paused through e.g. death
 
 """
 func load_map(map_path): #this will load a new map, leaving all player stats and hud untouched
@@ -60,13 +67,9 @@ func load_map(map_path): #this will load a new map, leaving all player stats and
 	# PAUSE ALL NODES AND UN-PAUSE SO THAT PLAYER IS E.G. NOT ABLE TO BLINK IN LOADING SCREENS
 """
 
-func reset_map(): #this will reload the current map, resetting all player stats and hud
-	get_tree().reload_current_scene()
-	init_player_data()
-	inventory.inventory.clear()
-
 func save_game(path):
 	emit_signal("saving_started") #let the game know that we want to save data
+	get_tree().paused = true
 	
 	var save_game = File.new()
 	save_game.open(path, File.WRITE)
@@ -96,6 +99,8 @@ func save_game(path):
 	
 	save_game.close()
 	
+	get_tree().paused = false
+	emit_signal("saving_finished")
 	print("Saving complete.")
 
 func load_game(path):
