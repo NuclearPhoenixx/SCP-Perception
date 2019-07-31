@@ -1,15 +1,15 @@
 extends StaticBody2D
 
-export(NodePath) var gate_partner_path = ""
-export(bool) var gate_open = false
+export(NodePath) var gate_partner_path
+export(bool) var door_open = false #is this door open? Mostly used for loading and the dual door gate
 export(int, 10) var door_clearance = 0 #no clearance needed, keycard needed for >0
 
 onready var DoorSprite = get_node("DoorModel")
 onready var Anim = DoorSprite.get_node("DoorAnimation")
 onready var DoorSound = get_node("DoorSound")
 onready var KeySound = get_node("KeycardSound")
-onready var gate_partner = get_node(gate_partner_path)
 
+var gate_partner #onready var gate_partner = get_node(gate_partner_path)
 var door_animation = "door_anim" #the right door_anim for this door
 
 func _ready():
@@ -18,13 +18,20 @@ func _ready():
 	get_node("LightOccluderRight").occluder = get_node("LightOccluderRight").occluder.duplicate()
 	get_node("CollisionShape").shape = get_node("CollisionShape").shape.duplicate()
 	get_node("CollisionShape2").shape = get_node("CollisionShape2").shape.duplicate()
+	game.connect("loading_finished", self, "init_door")
+	
+	init_door()
+
+func init_door():
+	if !NodePath(gate_partner_path).is_empty():
+		gate_partner = get_node(gate_partner_path)
 	
 	if door_clearance > 0: #initiate the right door sprites
 		door_animation = "secure_door_anim"
-		Anim.play(door_animation)
+		Anim.play(door_animation, -1, 10)
 	
-	if gate_open: #open door with animation
-		Anim.play_backwards(door_animation)
+	if door_open: #open door with animation
+		Anim.play(door_animation, -1, -10, true)
 
 func check_clearance(): #query clearance level from inventory
 	if door_clearance == 0: #check if door is open for everyone
@@ -51,9 +58,10 @@ func door_control():
 			DoorSound.stream = sound.door_close[core.rand_int(0,2)]
 			
 		DoorSound.play(.3)
+		door_open = !door_open
 		
 		if gate_partner != null: #this controls the interlocking security gate function
-				gate_partner.door_control()
+			gate_partner.door_control()
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("interact"):
@@ -77,7 +85,7 @@ func _on_InteractionArea_body_exited(body):
 func save():
 	var save_dict = {
 					"gate_partner_path": gate_partner_path,
-					#"gate_open": gate_open,
-					"door_clearance": door_clearance
+					"door_clearance": door_clearance,
+					"door_open": door_open
 					}
 	return save_dict

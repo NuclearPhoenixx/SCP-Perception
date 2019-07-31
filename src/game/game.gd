@@ -72,7 +72,7 @@ func save_game(path):
 	get_tree().paused = true
 	
 	var save_game = File.new()
-	save_game.open(path, File.WRITE)
+	save_game.open(path, File.WRITE) #OPTIONAL: Best compression is COMPRESSION_DEFLATE
 	
 	save_game.store_line(to_json({"inventory": inventory.inventory})) #save global data
 	save_game.store_line(to_json({"player_data": player_data}))

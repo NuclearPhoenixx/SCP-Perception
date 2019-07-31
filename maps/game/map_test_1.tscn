@@ -101,6 +101,7 @@ rotation = 1.5708
 [node name="Door10" parent="Navigation/Map/Doors" instance=ExtResource( 6 )]
 position = Vector2( 232, 240 )
 rotation = 1.5708
+door_open = true
 
 [node name="Door11" parent="Navigation/Map/Doors" instance=ExtResource( 6 )]
 position = Vector2( 120, 144 )
@@ -136,14 +137,14 @@ rotation = 1.5708
 position = Vector2( 928, 321 )
 
 [node name="Door19" parent="Navigation/Map/Doors" instance=ExtResource( 6 )]
-position = Vector2( 512, 434 )
+position = Vector2( 512, 605 )
 gate_partner_path = NodePath("../Door20")
-gate_open = true
 door_clearance = 1
 
 [node name="Door20" parent="Navigation/Map/Doors" instance=ExtResource( 6 )]
-position = Vector2( 512, 605 )
+position = Vector2( 512, 433 )
 gate_partner_path = NodePath("../Door19")
+door_open = true
 door_clearance = 1
 
 [node name="Furniture" type="Node2D" parent="Navigation/Map"]
