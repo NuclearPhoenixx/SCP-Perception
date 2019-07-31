@@ -68,7 +68,6 @@ func _on_IdleTimer_timeout(): #crude idle movement implementation
 	speed = IDLE_SPEED
 	create_path(position + idle_target)
 
-"""
 func save():
 	var save_dict = {
 					"MOVE_SPEED": MOVE_SPEED,
@@ -81,4 +80,3 @@ func save():
 					#"path": path
 					}
 	return save_dict
-"""

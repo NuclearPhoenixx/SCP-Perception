@@ -5,11 +5,11 @@ onready var BlinkTimer = get_node("BlinkTime")
 var BlinkNode
 
 func _ready():
-	max_value = game.BLINK
-	value = game.player_data["blink"]
+	game.connect("saving_started", self, "save_data")
+	game.connect("loading_finished", self, "update_data")
+	
+	update_data()
 	BlinkTimer.wait_time = game.BLINK_TIME
-	#game.connect("loading_started", self, "save_data")
-	#game.connect("saving_started", self, "save_data")
 	#spawn blink rect from software -> self contained
 	BlinkNode = ColorRect.new()
 	BlinkNode.anchor_bottom = 1
@@ -20,8 +20,12 @@ func _ready():
 	BlinkNode.hide()
 	get_parent().call_deferred("add_child_below_node", self, BlinkNode)
 
-#func save_data():
-#	game.player_data["blink"] = value
+func save_data():
+	game.player_data["blink"] = value
+
+func update_data(max_v = game.STAMINA, cur_v = game.player_data["stamina"]):
+	max_value = max_v
+	value = cur_v
 
 func _physics_process(delta):
 	if value == 0 and BlinkTimer.is_stopped():

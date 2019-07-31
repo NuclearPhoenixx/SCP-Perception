@@ -74,7 +74,6 @@ func _on_InteractionArea_body_exited(body):
 	if body.is_in_group("player"):
 		set_process_unhandled_key_input(false)
 
-"""
 func save():
 	var save_dict = {
 					"gate_partner_path": gate_partner_path,
@@ -82,4 +81,3 @@ func save():
 					"door_clearance": door_clearance
 					}
 	return save_dict
-"""
