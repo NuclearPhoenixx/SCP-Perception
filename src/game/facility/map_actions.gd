@@ -3,7 +3,7 @@ extends TileMap
 var prev_pos = Vector2()
 
 func floor_material(): #get the floor material of the tile the player is moving on
-	for Player in get_tree().get_nodes_in_group("Player"):
+	for Player in get_tree().get_nodes_in_group("player"):
 		var pos = world_to_map(Player.position)
 		
 		if prev_pos == pos:
