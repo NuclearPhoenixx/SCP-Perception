@@ -1,5 +1,7 @@
 extends TextureProgress
 
+export(Gradient) var exhausted_color
+onready var normal_color = texture_progress.gradient
 
 func _ready():
 	game.connect("saving_started", self, "save_data")
@@ -17,10 +19,12 @@ func update_data(max_v = game.STAMINA, cur_v = game.player_data["stamina"]):
 func _physics_process(delta):
 	if value == 0: #if stamina is 0 then the player is exhausted and stops sprinting
 		game.player_data["exhausted"] = true
+		texture_progress.gradient = exhausted_color
 	
 	#if player is exhausted then he cannot run until stamina has fully recovered
 	if game.player_data["exhausted"] and value == max_value:
 		game.player_data["exhausted"] = false
+		texture_progress.gradient = normal_color
 	
 	if Input.is_action_pressed("sprint") and !game.player_data["exhausted"]:
 		value -= game.STAMINA_EXHAUST

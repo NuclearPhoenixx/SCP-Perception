@@ -56,7 +56,8 @@ margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 script = ExtResource( 3 )
-inv_hover_color = Color( 1, 1, 1, 0.901961 )
+inv_hover_color = Color( 0.745098, 0.745098, 0.745098, 0.901961 )
+inv_normal_color = Color( 0.54902, 0.54902, 0.54902, 0.901961 )
 
 [node name="ItemImage" type="TextureRect" parent="InventorySlots/Slot1"]
 anchor_left = 0.5
@@ -76,7 +77,8 @@ margin_right = 170.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 script = ExtResource( 3 )
-inv_hover_color = Color( 1, 1, 1, 0.901961 )
+inv_hover_color = Color( 0.745098, 0.745098, 0.745098, 0.901961 )
+inv_normal_color = Color( 0.54902, 0.54902, 0.54902, 0.901961 )
 
 [node name="ItemImage" type="TextureRect" parent="InventorySlots/Slot2"]
 anchor_left = 0.5
@@ -96,7 +98,8 @@ margin_right = 260.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 script = ExtResource( 3 )
-inv_hover_color = Color( 1, 1, 1, 0.901961 )
+inv_hover_color = Color( 0.745098, 0.745098, 0.745098, 0.901961 )
+inv_normal_color = Color( 0.54902, 0.54902, 0.54902, 0.901961 )
 
 [node name="ItemImage" type="TextureRect" parent="InventorySlots/Slot3"]
 anchor_left = 0.5
@@ -116,7 +119,8 @@ margin_right = 350.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 script = ExtResource( 3 )
-inv_hover_color = Color( 1, 1, 1, 0.901961 )
+inv_hover_color = Color( 0.745098, 0.745098, 0.745098, 0.901961 )
+inv_normal_color = Color( 0.54902, 0.54902, 0.54902, 0.901961 )
 
 [node name="ItemImage" type="TextureRect" parent="InventorySlots/Slot4"]
 anchor_left = 0.5
@@ -136,7 +140,8 @@ margin_right = 80.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 80, 80 )
 script = ExtResource( 3 )
-inv_hover_color = Color( 1, 1, 1, 0.901961 )
+inv_hover_color = Color( 0.745098, 0.745098, 0.745098, 0.901961 )
+inv_normal_color = Color( 0.54902, 0.54902, 0.54902, 0.901961 )
 
 [node name="ItemImage" type="TextureRect" parent="InventorySlots/Slot5"]
 anchor_left = 0.5
@@ -157,7 +162,8 @@ margin_right = 170.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 80, 80 )
 script = ExtResource( 3 )
-inv_hover_color = Color( 1, 1, 1, 0.901961 )
+inv_hover_color = Color( 0.745098, 0.745098, 0.745098, 0.901961 )
+inv_normal_color = Color( 0.54902, 0.54902, 0.54902, 0.901961 )
 
 [node name="ItemImage" type="TextureRect" parent="InventorySlots/Slot6"]
 anchor_left = 0.5
@@ -178,7 +184,8 @@ margin_right = 260.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 80, 80 )
 script = ExtResource( 3 )
-inv_hover_color = Color( 1, 1, 1, 0.901961 )
+inv_hover_color = Color( 0.745098, 0.745098, 0.745098, 0.901961 )
+inv_normal_color = Color( 0.54902, 0.54902, 0.54902, 0.901961 )
 
 [node name="ItemImage" type="TextureRect" parent="InventorySlots/Slot7"]
 anchor_left = 0.5
@@ -199,7 +206,8 @@ margin_right = 350.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 80, 80 )
 script = ExtResource( 3 )
-inv_hover_color = Color( 1, 1, 1, 0.901961 )
+inv_hover_color = Color( 0.745098, 0.745098, 0.745098, 0.901961 )
+inv_normal_color = Color( 0.54902, 0.54902, 0.54902, 0.901961 )
 
 [node name="ItemImage" type="TextureRect" parent="InventorySlots/Slot8"]
 anchor_left = 0.5

@@ -27,7 +27,8 @@ func update_inv():
 	for item in inventory.inventory.keys():
 		if i == get_index():
 			var dict = inventory.inventory[item]
-			ImgNode.texture = load(dict["texture"]) 
+			ImgNode.texture = load(dict["texture"]).duplicate()
+			ImgNode.texture.flags = 0 #deactivate filter for big resolution
 			item_description = dict["item_description"]
 			item_name = dict["item_name"]
 			item_node_name = item
