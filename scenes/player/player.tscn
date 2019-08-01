@@ -9,10 +9,10 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=2]
 radius = 360.0
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=3]
 radius = 60.0
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -62,7 +62,7 @@ input_pickable = false
 monitorable = false
 
 [node name="Shape" type="CollisionShape2D" parent="SpotArea"]
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="ScareArea" type="Area2D" parent="."]
 editor/display_folded = true
@@ -70,7 +70,7 @@ input_pickable = false
 monitorable = false
 
 [node name="Shape" type="CollisionShape2D" parent="ScareArea"]
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="MoveSound" type="AudioStreamPlayer" parent="."]
 editor/display_folded = true
@@ -78,9 +78,12 @@ volume_db = -10.0
 bus = "Sound"
 
 [node name="Timer" type="Timer" parent="MoveSound"]
+one_shot = true
 
 [node name="SoundEffects" type="AudioStreamPlayer" parent="."]
 bus = "Sound"
+[connection signal="danger_scared" from="RayCastSCP" to="." method="tease_sound"]
+[connection signal="danger_spotted" from="RayCastSCP" to="." method="scare_sound"]
 [connection signal="body_entered" from="SpotArea" to="RayCastSCP" method="_on_SpotArea_body_entered"]
 [connection signal="body_exited" from="SpotArea" to="RayCastSCP" method="_on_SpotArea_body_exited"]
 [connection signal="body_entered" from="ScareArea" to="RayCastSCP" method="_on_ScareArea_body_entered"]

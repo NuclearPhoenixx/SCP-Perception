@@ -7,10 +7,6 @@ onready var SoundPlayer = get_node("SoundEffects")
 var inv_visible = false
 var floor_material = ""
 
-func _ready():
-	get_node("RayCastSCP").connect("danger_spotted", self, "tease_sound")
-	get_node("RayCastSCP").connect("danger_scared", self, "scare_sound")
-
 func move(direction):
 	var speed
 	
@@ -76,7 +72,6 @@ func move_sound(stream, delay): #sound handling
 
 func _on_Timer_timeout():
 	MoveSound.play()
-	SoundTimer.stop()
 
 func tease_sound(): #this will play when the player spots an enemy
 	if !SoundPlayer.is_playing():
