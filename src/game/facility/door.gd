@@ -28,10 +28,15 @@ func init_door():
 	
 	if door_clearance > 0: #initiate the right door sprites
 		door_animation = "secure_door_anim"
-		Anim.play(door_animation, -1, 10)
 	
-	if door_open: #open door with animation
-		Anim.play(door_animation, -1, -10, true)
+	Anim.play(door_animation)
+	
+	if door_open: #open door
+		Anim.seek(0, true)
+	else: #close door
+		Anim.seek(Anim.current_animation_length, true)
+	
+	Anim.stop()
 
 func check_clearance(): #query clearance level from inventory
 	if door_clearance == 0: #check if door is open for everyone
