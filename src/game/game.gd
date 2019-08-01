@@ -15,6 +15,8 @@ const BLINK = 100 #maximum player blink level
 
 # warning-ignore:unused_signal
 signal player_died #signal launched when player dies
+# warning-ignore:unused_signal
+signal player_spotted #when an SCP or other enemy spots the player
 signal loading_started #signal launched when loading a new map has started
 signal loading_finished #signal launched when loading a new map has ended
 signal saving_started #emitted when saving data has started

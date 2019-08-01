@@ -17,9 +17,9 @@ func _physics_process(delta):
 	if enabled:
 		cast_to = to_local(AreaTarget.position)
 		
-		if get_collider() == AreaTarget:
+		if get_collider() == AreaTarget: #if enemy sees target
 			TargetNode = AreaTarget
-			#play scary running sound
+			game.emit_signal("player_spotted") #mark player as spotted
 		else:
 			TargetNode = null
 		
