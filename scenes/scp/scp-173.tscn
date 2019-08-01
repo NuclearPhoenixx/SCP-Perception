@@ -32,7 +32,6 @@ shape = SubResource( 1 )
 visible = false
 width = 2.0
 default_color = Color( 1, 0.984314, 0, 1 )
-texture_mode = 0
 script = ExtResource( 3 )
 
 [node name="RayCastTarget" type="RayCast2D" parent="."]
@@ -53,7 +52,7 @@ script = ExtResource( 5 )
 shape = SubResource( 3 )
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="."]
-max_distance = 400.0
+max_distance = 350.0
 bus = "Sound"
 
 [node name="IdleTimer" type="Timer" parent="."]
