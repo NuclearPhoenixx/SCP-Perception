@@ -74,3 +74,4 @@ margin_right = 61.5
 margin_bottom = 15.0
 text = "PLAY"
 script = SubResource( 3 )
+[connection signal="finished" from="MenuMusic" to="MenuMusic" method="loop_theme"]
