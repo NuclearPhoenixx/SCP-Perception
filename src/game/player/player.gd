@@ -23,7 +23,7 @@ func move(direction):
 	
 	move_and_slide(direction * speed)
 
-func _physics_process(delta):
+func _process(delta): #Not doing this is physics process seems to get rid of the stutter, #fixed
 	#Better/Faster way of doing this (tested), however, this makes movement quite more choppy. Why?
 	var velocity = Vector2()
 	if Input.is_action_pressed("game_up"): # basic movement
@@ -41,21 +41,6 @@ func _physics_process(delta):
 	
 	if velocity.length() != 0:
 		move(velocity.normalized())
-	
-	"""
-	if Input.is_action_pressed("game_up"): # basic movement
-		get_tree().set_input_as_handled()
-		move(Vector2(0,-1))
-	if Input.is_action_pressed("game_down"):
-		get_tree().set_input_as_handled()
-		move(Vector2(0,1))
-	if Input.is_action_pressed("game_left"):
-		get_tree().set_input_as_handled()
-		move(Vector2(-1,0))
-	if Input.is_action_pressed("game_right"):
-		get_tree().set_input_as_handled()
-		move(Vector2(1,0))
-	"""
 	
 	if !inv_visible: #only move head if not in inventory
 		look_at(get_global_mouse_position()) # rotate head to mouse position
