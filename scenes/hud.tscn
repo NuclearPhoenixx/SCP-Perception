@@ -155,7 +155,7 @@ text = "YOU DIED!
 
 Player seems to have been expunged by %s.
 
-Press \"r\" to restart the game!"
+Press ESCAPE to continue..."
 align = 1
 valign = 1
 uppercase = true
