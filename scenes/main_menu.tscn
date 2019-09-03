@@ -1,26 +1,29 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://music/menu/menu.ogg" type="AudioStream" id=1]
 [ext_resource path="res://src/sound/main_menu_sound.gd" type="Script" id=2]
-[ext_resource path="res://textures/foundation_logo.svg" type="Texture" id=3]
-[ext_resource path="res://fonts/connection_ii/ConnectionII.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://src/main_menu/play_button.gd" type="Script" id=3]
+[ext_resource path="res://src/main_menu/quit_button.gd" type="Script" id=4]
+[ext_resource path="res://textures/foundation_logo.svg" type="Texture" id=5]
+[ext_resource path="res://fonts/connection_ii/ConnectionII.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://src/main_menu/menu_sequence.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
-outline_size = 1
-outline_color = Color( 0.380392, 0.380392, 0.380392, 0.862745 )
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 29
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 
-[sub_resource type="GDScript" id=3]
-script/source = "extends Button
+[sub_resource type="OpenSimplexNoise" id=5]
+period = 5.0
+persistence = 0.0
+lacunarity = 1.0
 
-func _pressed():
-	get_tree().change_scene(\"res://scenes/main_game.tscn\")
-"
+[sub_resource type="NoiseTexture" id=6]
+width = 1024
+noise = SubResource( 5 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -32,6 +35,61 @@ autoplay = true
 bus = "Music"
 script = ExtResource( 2 )
 
+[node name="MenuButtons" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -65.0
+margin_top = -90.0
+margin_right = 65.0
+margin_bottom = 115.0
+custom_constants/separation = 15
+
+[node name="PlayButton" type="Button" parent="MenuButtons"]
+margin_right = 130.0
+margin_bottom = 27.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "PLAY"
+script = ExtResource( 3 )
+
+[node name="LoadButton" type="Button" parent="MenuButtons"]
+margin_top = 42.0
+margin_right = 130.0
+margin_bottom = 69.0
+focus_mode = 0
+disabled = true
+enabled_focus_mode = 0
+text = "LOAD"
+
+[node name="OptionsButton" type="Button" parent="MenuButtons"]
+margin_top = 84.0
+margin_right = 130.0
+margin_bottom = 111.0
+focus_mode = 0
+disabled = true
+enabled_focus_mode = 0
+text = "OPTIONS"
+
+[node name="CreditsButton" type="Button" parent="MenuButtons"]
+margin_top = 126.0
+margin_right = 130.0
+margin_bottom = 153.0
+focus_mode = 0
+disabled = true
+enabled_focus_mode = 0
+text = "CREDITS"
+
+[node name="QuitButton" type="Button" parent="MenuButtons"]
+margin_top = 168.0
+margin_right = 130.0
+margin_bottom = 195.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "QUIT"
+script = ExtResource( 4 )
+
 [node name="FoundationLogo" type="TextureRect" parent="."]
 editor/display_folded = true
 anchor_left = 0.5
@@ -40,7 +98,7 @@ margin_left = -242.0
 margin_top = 20.0
 margin_right = -112.0
 margin_bottom = 150.0
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 expand = true
 
 [node name="Label" type="Label" parent="FoundationLogo"]
@@ -63,15 +121,76 @@ margin_bottom = 92.0
 custom_fonts/font = SubResource( 2 )
 text = "Secure. Contain. Protect."
 
-[node name="PlayButton" type="Button" parent="."]
+[node name="FoundationLogoDamaged" type="TextureRect" parent="."]
+editor/display_folded = true
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -242.0
+margin_top = 20.0
+margin_right = -112.0
+margin_bottom = 150.0
+rect_rotation = 4.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Label" type="Label" parent="FoundationLogoDamaged"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -61.5
-margin_top = -15.0
-margin_right = 61.5
-margin_bottom = 15.0
-text = "PLAY"
-script = SubResource( 3 )
+margin_left = 85.0
+margin_top = -50.0
+margin_right = 453.0
+margin_bottom = 11.0
+rect_rotation = -3.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.643137, 0.603922, 0.603922, 1 )
+text = "SCP Foundation"
+
+[node name="Label" type="Label" parent="FoundationLogoDamaged/Label"]
+margin_left = 1.0
+margin_top = 56.0
+margin_right = 366.0
+margin_bottom = 92.0
+rect_rotation = 6.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.517647, 0.419608, 0.419608, 1 )
+text = "Secure. Contain. Protect."
+
+[node name="TextureRect" type="TextureRect" parent="."]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 6 )
+script = ExtResource( 7 )
+
+[node name="WaitTimer" type="Timer" parent="TextureRect"]
+wait_time = 20.5
+one_shot = true
+autostart = true
+
+[node name="StaticTimer" type="Timer" parent="TextureRect"]
+wait_time = 2.0
+one_shot = true
+
+[node name="BeepTimer" type="Timer" parent="TextureRect"]
+one_shot = true
+
+[node name="TestImage" type="ColorRect" parent="."]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.294118, 0, 0.917647, 1 )
+
+[node name="Label" type="Label" parent="TestImage"]
+margin_right = 40.0
+margin_bottom = 21.0
+text = "test effect"
 [connection signal="finished" from="MenuMusic" to="MenuMusic" method="loop_theme"]
+[connection signal="pressed" from="MenuButtons/QuitButton" to="MenuButtons/QuitButton" method="_on_QuitButton_pressed"]
+[connection signal="timeout" from="TextureRect/WaitTimer" to="TextureRect" method="_on_WaitTimer_timeout"]
+[connection signal="timeout" from="TextureRect/StaticTimer" to="TextureRect" method="_on_StaticTimer_timeout"]
+[connection signal="timeout" from="TextureRect/BeepTimer" to="TextureRect" method="_on_BeepTimer_timeout"]
