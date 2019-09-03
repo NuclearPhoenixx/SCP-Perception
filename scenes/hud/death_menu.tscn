@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://textures/hud/in_game_menu.tres" type="StyleBox" id=1]
 [ext_resource path="res://src/game/hud/death_menu/death_menu.gd" type="Script" id=2]
 [ext_resource path="res://fonts/connection_ii/ConnectionII.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://src/game/hud/death_menu/reset_button.gd" type="Script" id=4]
+[ext_resource path="res://src/game/hud/menu/quit_button.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -17,38 +19,52 @@ script = ExtResource( 2 )
 [node name="MenuTree" type="VBoxContainer" parent="."]
 margin_left = 35.0
 margin_top = 20.0
-margin_right = 108.0
-margin_bottom = 193.0
+margin_right = 153.0
+margin_bottom = 240.0
 custom_constants/separation = 20
 alignment = 1
 
 [node name="HeaderLabel" type="Label" parent="MenuTree"]
-margin_right = 73.0
+margin_right = 118.0
 margin_bottom = 32.0
 custom_fonts/font = SubResource( 1 )
 text = "Menu"
 align = 1
 
-[node name="SaveButton" type="Button" parent="MenuTree"]
+[node name="ResetButton" type="Button" parent="MenuTree"]
 margin_top = 52.0
-margin_right = 73.0
+margin_right = 118.0
 margin_bottom = 79.0
 focus_mode = 0
+enabled_focus_mode = 0
+text = "Reset Level"
+script = ExtResource( 4 )
+
+[node name="SaveButton" type="Button" parent="MenuTree"]
+margin_top = 99.0
+margin_right = 118.0
+margin_bottom = 126.0
+focus_mode = 0
+disabled = true
 enabled_focus_mode = 0
 text = "Save"
 
 [node name="LoadButton" type="Button" parent="MenuTree"]
-margin_top = 99.0
-margin_right = 73.0
-margin_bottom = 126.0
+margin_top = 146.0
+margin_right = 118.0
+margin_bottom = 173.0
 focus_mode = 0
+disabled = true
 enabled_focus_mode = 0
 text = "Load"
 
 [node name="QuitButton" type="Button" parent="MenuTree"]
-margin_top = 146.0
-margin_right = 73.0
-margin_bottom = 173.0
+margin_top = 193.0
+margin_right = 118.0
+margin_bottom = 220.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Quit"
+script = ExtResource( 5 )
+[connection signal="pressed" from="MenuTree/ResetButton" to="MenuTree/ResetButton" method="_on_ResetButton_pressed"]
+[connection signal="pressed" from="MenuTree/QuitButton" to="MenuTree/QuitButton" method="_on_QuitButton_pressed"]

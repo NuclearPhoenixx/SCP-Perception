@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://textures/hud/in_game_menu.tres" type="StyleBox" id=1]
 [ext_resource path="res://src/game/hud/in_game_menu/in_game_menu.gd" type="Script" id=2]
 [ext_resource path="res://fonts/connection_ii/ConnectionII.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://src/game/hud/in_game_menu/resume_button.gd" type="Script" id=4]
+[ext_resource path="res://src/game/hud/menu/quit_button.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=2]
 size = 28
@@ -36,12 +38,14 @@ margin_bottom = 79.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Resume"
+script = ExtResource( 4 )
 
 [node name="SaveButton" type="Button" parent="MenuTree"]
 margin_top = 99.0
 margin_right = 83.0
 margin_bottom = 126.0
 focus_mode = 0
+disabled = true
 enabled_focus_mode = 0
 text = "Save"
 
@@ -50,6 +54,7 @@ margin_top = 146.0
 margin_right = 83.0
 margin_bottom = 173.0
 focus_mode = 0
+disabled = true
 enabled_focus_mode = 0
 text = "Load"
 
@@ -58,6 +63,7 @@ margin_top = 193.0
 margin_right = 83.0
 margin_bottom = 220.0
 focus_mode = 0
+disabled = true
 enabled_focus_mode = 0
 text = "Options"
 
@@ -68,3 +74,6 @@ margin_bottom = 267.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Quit"
+script = ExtResource( 5 )
+[connection signal="pressed" from="MenuTree/ResumeButton" to="MenuTree/ResumeButton" method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="MenuTree/QuitButton" to="MenuTree/QuitButton" method="_on_QuitButton_pressed"]
