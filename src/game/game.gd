@@ -37,9 +37,6 @@ func init_player_data(): #STANDARD VALUES FOR PLAYER DATA
 					}
 
 func _unhandled_key_input(event):
-	if event.is_action_pressed("ui_cancel"): #quit game
-		get_tree().quit()
-	
 	if event.is_action_pressed("reset"): #reset scene
 		get_tree().set_input_as_handled()
 		reset_map()
