@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/game/hud/fps_label.gd" type="Script" id=1]
 [ext_resource path="res://src/game/hud/stamina.gd" type="Script" id=2]
@@ -6,11 +6,12 @@
 [ext_resource path="res://src/game/effect/blink.gd" type="Script" id=4]
 [ext_resource path="res://textures/icon/blink.png" type="Texture" id=5]
 [ext_resource path="res://scenes/inventory.tscn" type="PackedScene" id=6]
-[ext_resource path="res://textures/hud/message_box.tres" type="StyleBox" id=7]
-[ext_resource path="res://src/game/hud/death_message.gd" type="Script" id=8]
-[ext_resource path="res://fonts/connection_ii/ConnectionII.otf" type="DynamicFontData" id=9]
-[ext_resource path="res://src/game/hud/loading_message.gd" type="Script" id=10]
-[ext_resource path="res://src/game/hud/saving_message.gd" type="Script" id=11]
+[ext_resource path="res://scenes/hud/in_game_menu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://textures/hud/message_box.tres" type="StyleBox" id=8]
+[ext_resource path="res://src/game/hud/death_message.gd" type="Script" id=9]
+[ext_resource path="res://fonts/connection_ii/ConnectionII.otf" type="DynamicFontData" id=10]
+[ext_resource path="res://src/game/hud/loading_message.gd" type="Script" id=11]
+[ext_resource path="res://src/game/hud/saving_message.gd" type="Script" id=12]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0 )
@@ -35,11 +36,11 @@ gradient = SubResource( 3 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 20
-font_data = ExtResource( 9 )
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 18
-font_data = ExtResource( 9 )
+font_data = ExtResource( 10 )
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -116,6 +117,17 @@ margin_top = -300.0
 margin_right = 512.0
 margin_bottom = 300.0
 
+[node name="InGameMenu" parent="." instance=ExtResource( 7 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -76.5
+margin_top = -158.5
+margin_right = 76.5
+margin_bottom = 158.5
+
 [node name="DeathMessage" type="PanelContainer" parent="."]
 editor/display_folded = true
 visible = false
@@ -127,8 +139,8 @@ margin_left = -237.0
 margin_top = -66.0
 margin_right = 237.0
 margin_bottom = 66.0
-custom_styles/panel = ExtResource( 7 )
-script = ExtResource( 8 )
+custom_styles/panel = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="MessageText" type="Label" parent="DeathMessage"]
 margin_left = 5.0
@@ -154,8 +166,8 @@ margin_left = -45.0
 margin_top = 5.0
 margin_right = 45.0
 margin_bottom = 31.0
-custom_styles/panel = ExtResource( 7 )
-script = ExtResource( 10 )
+custom_styles/panel = ExtResource( 8 )
+script = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="LoadingMessage"]
 margin_left = 5.0
@@ -180,8 +192,8 @@ margin_left = -40.5
 margin_top = 5.0
 margin_right = 40.5
 margin_bottom = 31.0
-custom_styles/panel = ExtResource( 7 )
-script = ExtResource( 11 )
+custom_styles/panel = ExtResource( 8 )
+script = ExtResource( 12 )
 
 [node name="Label" type="Label" parent="SavingMessage"]
 margin_left = 5.0
