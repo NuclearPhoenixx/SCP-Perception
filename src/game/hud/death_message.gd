@@ -1,4 +1,4 @@
-extends ColorRect
+extends PanelContainer
 
 func _ready():
 	game.connect("player_died", self, "death")
