@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/game/hud/fps_label.gd" type="Script" id=1]
 [ext_resource path="res://src/game/hud/stamina.gd" type="Script" id=2]
@@ -10,8 +10,9 @@
 [ext_resource path="res://textures/hud/message_box.tres" type="StyleBox" id=8]
 [ext_resource path="res://src/game/hud/death_message.gd" type="Script" id=9]
 [ext_resource path="res://fonts/connection_ii/ConnectionII.otf" type="DynamicFontData" id=10]
-[ext_resource path="res://src/game/hud/loading_message.gd" type="Script" id=11]
+[ext_resource path="res://scenes/hud/death_menu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/game/hud/saving_message.gd" type="Script" id=12]
+[ext_resource path="res://src/game/hud/loading_message.gd" type="Script" id=13]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0 )
@@ -137,18 +138,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -237.0
-margin_top = -66.0
-margin_right = 237.0
-margin_bottom = 66.0
+margin_left = -280.0
+margin_top = -76.0
+margin_right = 280.0
+margin_bottom = 76.0
 custom_styles/panel = ExtResource( 8 )
 script = ExtResource( 9 )
 
 [node name="MessageText" type="Label" parent="DeathMessage"]
 margin_left = 5.0
-margin_top = 5.0
-margin_right = 469.0
-margin_bottom = 127.0
+margin_top = 15.0
+margin_right = 555.0
+margin_bottom = 137.0
 custom_fonts/font = SubResource( 7 )
 text = "YOU DIED!
 
@@ -159,31 +160,17 @@ align = 1
 valign = 1
 uppercase = true
 
-[node name="LoadingMessage" type="PanelContainer" parent="."]
-editor/display_folded = true
+[node name="DeathMenu" parent="." instance=ExtResource( 11 )]
+pause_mode = 2
 visible = false
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-margin_left = -45.0
-margin_top = 5.0
-margin_right = 45.0
-margin_bottom = 31.0
-custom_styles/panel = ExtResource( 8 )
-script = ExtResource( 11 )
-
-[node name="Label" type="Label" parent="LoadingMessage"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 85.0
-margin_bottom = 26.0
-custom_fonts/font = SubResource( 8 )
-text = "loading..."
-align = 1
-valign = 1
-uppercase = true
-
-[node name="Timer" type="Timer" parent="LoadingMessage"]
-one_shot = true
+anchor_bottom = 0.5
+margin_left = -71.5
+margin_top = -111.5
+margin_right = 71.5
+margin_bottom = 111.5
 
 [node name="SavingMessage" type="PanelContainer" parent="."]
 editor/display_folded = true
@@ -212,9 +199,35 @@ uppercase = true
 wait_time = 0.6
 one_shot = true
 
+[node name="LoadingMessage" type="PanelContainer" parent="."]
+editor/display_folded = true
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -45.0
+margin_top = 5.0
+margin_right = 45.0
+margin_bottom = 31.0
+custom_styles/panel = ExtResource( 8 )
+script = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="LoadingMessage"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 85.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 8 )
+text = "loading..."
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Timer" type="Timer" parent="LoadingMessage"]
+one_shot = true
+
 [node name="HUDSound" type="AudioStreamPlayer" parent="."]
 bus = "GUI"
 [connection signal="timeout" from="FPSLabel/Timer" to="FPSLabel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="BlinkMeter/BlinkTime" to="BlinkMeter" method="_on_BlinkTime_timeout"]
-[connection signal="timeout" from="LoadingMessage/Timer" to="LoadingMessage" method="_on_Timer_timeout"]
 [connection signal="timeout" from="SavingMessage/Timer" to="SavingMessage" method="_on_Timer_timeout"]
+[connection signal="timeout" from="LoadingMessage/Timer" to="LoadingMessage" method="_on_Timer_timeout"]

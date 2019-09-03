@@ -25,7 +25,7 @@ signal saving_finished #saving the current level has finished
 var player_data # THIS HOLDS ALL PLAYER DATA
 
 func _ready():
-	pause_mode = Node.PAUSE_MODE_PROCESS
+	#pause_mode = Node.PAUSE_MODE_PROCESS
 	init_player_data()
 
 func init_player_data(): #STANDARD VALUES FOR PLAYER DATA

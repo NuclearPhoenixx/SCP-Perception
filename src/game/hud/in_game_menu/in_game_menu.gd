@@ -2,6 +2,6 @@ extends PanelContainer
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("ui_cancel"):
+		get_tree().set_input_as_handled()
 		visible = !visible
-		var tree = get_tree()
-		tree.paused = !tree.paused
+		get_tree().paused = visible
