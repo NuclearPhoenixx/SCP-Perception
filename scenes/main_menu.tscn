@@ -16,14 +16,14 @@ font_data = ExtResource( 6 )
 size = 29
 font_data = ExtResource( 6 )
 
-[sub_resource type="OpenSimplexNoise" id=5]
+[sub_resource type="OpenSimplexNoise" id=3]
 period = 5.0
 persistence = 0.0
 lacunarity = 1.0
 
-[sub_resource type="NoiseTexture" id=6]
+[sub_resource type="NoiseTexture" id=4]
 width = 1024
-noise = SubResource( 5 )
+noise = SubResource( 3 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -163,7 +163,7 @@ editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = SubResource( 6 )
+texture = SubResource( 4 )
 script = ExtResource( 7 )
 
 [node name="WaitTimer" type="Timer" parent="TextureRect"]
