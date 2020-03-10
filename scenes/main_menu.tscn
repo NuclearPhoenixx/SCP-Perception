@@ -99,6 +99,9 @@ margin_right = -112.0
 margin_bottom = 150.0
 texture = ExtResource( 5 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="FoundationLogo"]
 anchor_left = 0.5
