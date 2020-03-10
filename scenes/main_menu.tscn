@@ -48,50 +48,49 @@ custom_constants/separation = 15
 
 [node name="PlayButton" type="Button" parent="MenuButtons"]
 margin_right = 130.0
-margin_bottom = 27.0
+margin_bottom = 25.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "PLAY"
 script = ExtResource( 3 )
 
 [node name="LoadButton" type="Button" parent="MenuButtons"]
-margin_top = 42.0
+margin_top = 40.0
 margin_right = 130.0
-margin_bottom = 69.0
+margin_bottom = 65.0
 focus_mode = 0
 disabled = true
 enabled_focus_mode = 0
 text = "LOAD"
 
 [node name="OptionsButton" type="Button" parent="MenuButtons"]
-margin_top = 84.0
+margin_top = 80.0
 margin_right = 130.0
-margin_bottom = 111.0
+margin_bottom = 105.0
 focus_mode = 0
 disabled = true
 enabled_focus_mode = 0
 text = "OPTIONS"
 
 [node name="CreditsButton" type="Button" parent="MenuButtons"]
-margin_top = 126.0
+margin_top = 120.0
 margin_right = 130.0
-margin_bottom = 153.0
+margin_bottom = 145.0
 focus_mode = 0
 disabled = true
 enabled_focus_mode = 0
 text = "CREDITS"
 
 [node name="QuitButton" type="Button" parent="MenuButtons"]
-margin_top = 168.0
+margin_top = 160.0
 margin_right = 130.0
-margin_bottom = 195.0
+margin_bottom = 185.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "QUIT"
 script = ExtResource( 4 )
 
 [node name="FoundationLogo" type="TextureRect" parent="."]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -242.0
@@ -122,7 +121,6 @@ custom_fonts/font = SubResource( 2 )
 text = "Secure. Contain. Protect."
 
 [node name="FoundationLogoDamaged" type="TextureRect" parent="."]
-editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
@@ -159,7 +157,6 @@ custom_colors/font_color = Color( 0.517647, 0.419608, 0.419608, 1 )
 text = "Secure. Contain. Protect."
 
 [node name="TextureRect" type="TextureRect" parent="."]
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -179,7 +176,6 @@ one_shot = true
 one_shot = true
 
 [node name="TestImage" type="ColorRect" parent="."]
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
