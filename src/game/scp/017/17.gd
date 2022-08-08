@@ -20,7 +20,7 @@ func create_path(pos):
 	path = Nav.get_simple_path(position, pos)
 	#look_at(pos)
 
-func move(speed = MOVE_SPEED):
+func move(s = MOVE_SPEED):
 	var distance = path[0] - position
 	
 	while distance.length() <= cs_radius + .1: #loop through until valid target pos has been found
@@ -29,7 +29,7 @@ func move(speed = MOVE_SPEED):
 			return
 		distance = path[0] - position
 	
-	move_and_slide(distance.normalized() * speed)
+	move_and_slide(distance.normalized() * s)
 	#look_at(distance)
 
 func open_door(door): #this function will probably kill everybody

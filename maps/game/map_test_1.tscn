@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://textures/tilemap/tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://src/game/facility/map_actions.gd" type="Script" id=2]
@@ -13,9 +13,14 @@
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/scp/scp-017.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/scp/scp-173.tscn" type="PackedScene" id=13]
+[ext_resource path="res://fonts/connection_ii/ConnectionII.otf" type="DynamicFontData" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13, 13 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+font_data = ExtResource( 14 )
 
 [node name="World" type="Node2D"]
 __meta__ = {
@@ -38,7 +43,6 @@ __meta__ = {
 }
 
 [node name="Decals" type="Node2D" parent="Navigation/Map"]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -58,13 +62,11 @@ scale = Vector2( 2, 1.5 )
 texture = ExtResource( 5 )
 
 [node name="Doors" type="Node2D" parent="Navigation/Map"]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Door" parent="Navigation/Map/Doors" instance=ExtResource( 6 )]
-editor/display_folded = true
 position = Vector2( 320, 615 )
 
 [node name="Door2" parent="Navigation/Map/Doors" instance=ExtResource( 6 )]
@@ -94,7 +96,6 @@ position = Vector2( -248, 480 )
 rotation = 1.5708
 
 [node name="Door9" parent="Navigation/Map/Doors" instance=ExtResource( 6 )]
-editor/display_folded = true
 position = Vector2( 120, 240 )
 rotation = 1.5708
 
@@ -116,7 +117,6 @@ position = Vector2( -152, 656 )
 rotation = 1.5708
 
 [node name="Door14" parent="Navigation/Map/Doors" instance=ExtResource( 6 )]
-editor/display_folded = true
 position = Vector2( 264, 105 )
 scale = Vector2( 1.5, 1 )
 
@@ -148,7 +148,6 @@ door_open = true
 door_clearance = 1
 
 [node name="Furniture" type="Node2D" parent="Navigation/Map"]
-editor/display_folded = true
 
 [node name="WoddenDesk" parent="Navigation/Map/Furniture" instance=ExtResource( 7 )]
 position = Vector2( 336, 311 )
@@ -158,7 +157,6 @@ position = Vector2( 382, 208 )
 rotation = -1.5708
 
 [node name="Items" type="Node2D" parent="Navigation/Map"]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -191,7 +189,6 @@ position = Vector2( 252.616, -8.29048 )
 position = Vector2( 261.881, 41.4523 )
 
 [node name="FacilityTestBox" type="RigidBody2D" parent="Navigation/Map"]
-editor/display_folded = true
 position = Vector2( 150, 55 )
 linear_damp = 25.0
 angular_damp = 25.0
@@ -208,6 +205,24 @@ margin_top = -13.0
 margin_right = 13.0
 margin_bottom = 13.0
 color = Color( 0.439216, 0.345098, 0.345098, 1 )
+
+[node name="Label" type="Label" parent="Navigation/Map"]
+margin_left = 329.85
+margin_top = -25.675
+margin_right = 455.85
+margin_bottom = 49.325
+custom_fonts/font = SubResource( 2 )
+text = "\"Shift\" to run.
+\"R\" to reset.
+\"Tab\" to open inventory.
+\"Space\" to blink.
+\"E\" to interact.
+\"Esc\" for menu.
+
+You are not alone!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Player" parent="." instance=ExtResource( 11 )]
 position = Vector2( 414.035, 33.1618 )

@@ -8,33 +8,36 @@
 size = 34
 font_data = ExtResource( 2 )
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0 )
 colors = PoolColorArray( 0.54902, 0.54902, 0.54902, 0.901961 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 80
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.745098, 0.745098, 0.745098, 0.901961 )
 
 [sub_resource type="GradientTexture" id=5]
 gradient = SubResource( 4 )
 width = 80
 
-[sub_resource type="Gradient" id=6]
-offsets = PoolRealArray( 0 )
-colors = PoolColorArray( 0.745098, 0.745098, 0.745098, 0.901961 )
-
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
-width = 80
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=6]
 size = 22
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 2 )
 
 [node name="Inventory" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -67,15 +70,14 @@ custom_constants/hseparation = 10
 columns = 4
 
 [node name="Slot1" type="TextureButton" parent="InventorySlots"]
-editor/display_folded = true
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
 button_mask = 3
 enabled_focus_mode = 0
-texture_normal = SubResource( 5 )
-texture_hover = SubResource( 7 )
+texture_normal = SubResource( 3 )
+texture_hover = SubResource( 5 )
 expand = true
 script = ExtResource( 3 )
 
@@ -91,7 +93,6 @@ mouse_filter = 2
 stretch_mode = 4
 
 [node name="Slot2" type="TextureButton" parent="InventorySlots"]
-editor/display_folded = true
 margin_left = 90.0
 margin_right = 170.0
 margin_bottom = 80.0
@@ -99,8 +100,8 @@ rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
 button_mask = 3
 enabled_focus_mode = 0
-texture_normal = SubResource( 5 )
-texture_hover = SubResource( 7 )
+texture_normal = SubResource( 3 )
+texture_hover = SubResource( 5 )
 expand = true
 script = ExtResource( 3 )
 
@@ -116,7 +117,6 @@ mouse_filter = 2
 stretch_mode = 4
 
 [node name="Slot3" type="TextureButton" parent="InventorySlots"]
-editor/display_folded = true
 margin_left = 180.0
 margin_right = 260.0
 margin_bottom = 80.0
@@ -124,8 +124,8 @@ rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
 button_mask = 3
 enabled_focus_mode = 0
-texture_normal = SubResource( 5 )
-texture_hover = SubResource( 7 )
+texture_normal = SubResource( 3 )
+texture_hover = SubResource( 5 )
 expand = true
 script = ExtResource( 3 )
 
@@ -141,7 +141,6 @@ mouse_filter = 2
 stretch_mode = 4
 
 [node name="Slot4" type="TextureButton" parent="InventorySlots"]
-editor/display_folded = true
 margin_left = 270.0
 margin_right = 350.0
 margin_bottom = 80.0
@@ -149,8 +148,8 @@ rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
 button_mask = 3
 enabled_focus_mode = 0
-texture_normal = SubResource( 5 )
-texture_hover = SubResource( 7 )
+texture_normal = SubResource( 3 )
+texture_hover = SubResource( 5 )
 expand = true
 script = ExtResource( 3 )
 
@@ -166,7 +165,6 @@ mouse_filter = 2
 stretch_mode = 4
 
 [node name="Slot5" type="TextureButton" parent="InventorySlots"]
-editor/display_folded = true
 margin_top = 90.0
 margin_right = 80.0
 margin_bottom = 170.0
@@ -174,8 +172,8 @@ rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
 button_mask = 3
 enabled_focus_mode = 0
-texture_normal = SubResource( 5 )
-texture_hover = SubResource( 7 )
+texture_normal = SubResource( 3 )
+texture_hover = SubResource( 5 )
 expand = true
 script = ExtResource( 3 )
 
@@ -191,7 +189,6 @@ mouse_filter = 2
 stretch_mode = 4
 
 [node name="Slot6" type="TextureButton" parent="InventorySlots"]
-editor/display_folded = true
 margin_left = 90.0
 margin_top = 90.0
 margin_right = 170.0
@@ -200,8 +197,8 @@ rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
 button_mask = 3
 enabled_focus_mode = 0
-texture_normal = SubResource( 5 )
-texture_hover = SubResource( 7 )
+texture_normal = SubResource( 3 )
+texture_hover = SubResource( 5 )
 expand = true
 script = ExtResource( 3 )
 
@@ -217,7 +214,6 @@ mouse_filter = 2
 stretch_mode = 4
 
 [node name="Slot7" type="TextureButton" parent="InventorySlots"]
-editor/display_folded = true
 margin_left = 180.0
 margin_top = 90.0
 margin_right = 260.0
@@ -226,8 +222,8 @@ rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
 button_mask = 3
 enabled_focus_mode = 0
-texture_normal = SubResource( 5 )
-texture_hover = SubResource( 7 )
+texture_normal = SubResource( 3 )
+texture_hover = SubResource( 5 )
 expand = true
 script = ExtResource( 3 )
 
@@ -243,7 +239,6 @@ mouse_filter = 2
 stretch_mode = 4
 
 [node name="Slot8" type="TextureButton" parent="InventorySlots"]
-editor/display_folded = true
 margin_left = 270.0
 margin_top = 90.0
 margin_right = 350.0
@@ -252,8 +247,8 @@ rect_min_size = Vector2( 80, 80 )
 focus_mode = 0
 button_mask = 3
 enabled_focus_mode = 0
-texture_normal = SubResource( 5 )
-texture_hover = SubResource( 7 )
+texture_normal = SubResource( 3 )
+texture_hover = SubResource( 5 )
 expand = true
 script = ExtResource( 3 )
 
@@ -274,7 +269,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = 110.0
 margin_bottom = 135.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 6 )
 align = 1
 
 [node name="ItemDescription" type="Label" parent="ItemName"]
@@ -283,7 +278,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = 27.5
 margin_bottom = 45.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 7 )
 align = 1
 [connection signal="gui_input" from="InventorySlots/Slot1" to="InventorySlots/Slot1" method="_on_Slot1_gui_input"]
 [connection signal="mouse_entered" from="InventorySlots/Slot1" to="InventorySlots/Slot1" method="_on_Slot1_mouse_entered"]
