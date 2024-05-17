@@ -20,60 +20,61 @@ script = ExtResource( 2 )
 margin_left = 35.0
 margin_top = 20.0
 margin_right = 118.0
-margin_bottom = 287.0
+margin_bottom = 274.0
 custom_constants/separation = 20
 alignment = 1
 
 [node name="HeaderLabel" type="Label" parent="MenuTree"]
 margin_right = 83.0
-margin_bottom = 32.0
+margin_bottom = 29.0
 custom_fonts/font = SubResource( 1 )
 text = "Menu"
 align = 1
 
 [node name="ResumeButton" type="Button" parent="MenuTree"]
-margin_top = 52.0
+margin_top = 49.0
 margin_right = 83.0
-margin_bottom = 79.0
+margin_bottom = 74.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Resume"
 script = ExtResource( 4 )
 
 [node name="SaveButton" type="Button" parent="MenuTree"]
-margin_top = 99.0
+margin_top = 94.0
 margin_right = 83.0
-margin_bottom = 126.0
+margin_bottom = 119.0
 focus_mode = 0
 disabled = true
 enabled_focus_mode = 0
 text = "Save"
 
 [node name="LoadButton" type="Button" parent="MenuTree"]
-margin_top = 146.0
+margin_top = 139.0
 margin_right = 83.0
-margin_bottom = 173.0
+margin_bottom = 164.0
 focus_mode = 0
 disabled = true
 enabled_focus_mode = 0
 text = "Load"
 
 [node name="OptionsButton" type="Button" parent="MenuTree"]
-margin_top = 193.0
+margin_top = 184.0
 margin_right = 83.0
-margin_bottom = 220.0
+margin_bottom = 209.0
 focus_mode = 0
 disabled = true
 enabled_focus_mode = 0
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="MenuTree"]
-margin_top = 240.0
+margin_top = 229.0
 margin_right = 83.0
-margin_bottom = 267.0
+margin_bottom = 254.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Quit"
 script = ExtResource( 5 )
+
 [connection signal="pressed" from="MenuTree/ResumeButton" to="MenuTree/ResumeButton" method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="MenuTree/QuitButton" to="MenuTree/QuitButton" method="_on_QuitButton_pressed"]

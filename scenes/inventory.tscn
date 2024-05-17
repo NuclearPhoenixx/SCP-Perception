@@ -280,6 +280,7 @@ margin_top = 27.5
 margin_bottom = 45.5
 custom_fonts/font = SubResource( 7 )
 align = 1
+
 [connection signal="gui_input" from="InventorySlots/Slot1" to="InventorySlots/Slot1" method="_on_Slot1_gui_input"]
 [connection signal="mouse_entered" from="InventorySlots/Slot1" to="InventorySlots/Slot1" method="_on_Slot1_mouse_entered"]
 [connection signal="mouse_exited" from="InventorySlots/Slot1" to="InventorySlots/Slot1" method="_on_Slot1_mouse_exited"]

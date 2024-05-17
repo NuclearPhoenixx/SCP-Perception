@@ -14,9 +14,9 @@ shadow_filter = 1
 script = ExtResource( 2 )
 
 [node name="ActivationArea" type="Area2D" parent="."]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationArea"]
 shape = SubResource( 1 )
+
 [connection signal="body_entered" from="ActivationArea" to="." method="_on_ActivationArea_body_entered"]
 [connection signal="body_exited" from="ActivationArea" to="." method="_on_ActivationArea_body_exited"]
