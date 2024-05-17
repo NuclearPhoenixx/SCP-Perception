@@ -1,6 +1,6 @@
 # SCP - Perception
 
-Cancelled "game", more like prototype, that I had a bunch of fun working on in mid 2019.
+Cancelled "game", more like prototype, that I had a bunch of fun working on in mid 2019. Basically a more enhanced version of my [Godot - 2D Horror Demo](https://github.com/NuclearPhoenixx/Godot-Horror-Demo-2D)
 
 I had no real story or gameplay concept (no vision), but I essentially wanted to experiment with how a horror game like SCP Containment breach could work in a 2D top-down game.
 I also had no fu**ing clue what I was doing since I had next to no prior experience in Godot or any other game engine whatsoever.
